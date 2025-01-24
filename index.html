@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CSS RESET</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+    body{
+        font-family: "Inter", serif;
+        font-optical-sizing: auto;
+    }
+
+    .color-box {
+            width: 150px;
+            height: 100px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .rgba-gray-much-darker-opacity {
+            background-color: var(--clr-rgba-gray-much-darker-opacity);
+        }
+        .rgba-gray-darker-opacity {
+            background-color: var(--clr-rgba-gray-darker-opacity);
+        }
+        .rgba-gray-much-darker {
+            background-color: var(--clr-rgba-gray-much-darker);
+        }
+        .rgba-gray-med-darker {
+            background-color: var(--clr-rgba-gray-med-darker);
+        }
+        .rgba-gray-darker {
+            background-color: var(--clr-rgba-gray-darker);
+        }
+        .rgba-gray {
+            background-color: var(--clr-rgba-gray);
+            color: #1e1e1e;
+        }
+        .rgba-gray-soft {
+            background-color: var(--clr-rgba-gray-soft);
+            color: #1e1e1e;
+        }
+        .rgba-gray-softer {
+            background-color: var(--clr-rgba-gray-softer);
+            color: #1e1e1e;
+        }
+        .gray-darker {
+            background-color: var(--clr-gray-darker);
+        }
+        .gray {
+            background-color: var(--clr-gray);
+        }
+        .gray-softer {
+            background-color: var(--clr-gray-softer);
+        }
+        .gray-much-softer {
+            background-color: var(--clr-gray-much-softer);
+            color: #000;
+        }
+
+
+
+        .font-box {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .fs-main { font-size: var(--fs-main); }
+        .fs-h1 { font-size: var(--fs-h1); }
+        .fs-h2 { font-size: var(--fs-h2); }
+        .fs-h3 { font-size: var(--fs-h3); }
+        .fs-h4 { font-size: var(--fs-h4); }
+        .fs-h5 { font-size: var(--fs-h5); }
+        .fs-h6 { font-size: var(--fs-h6); }
+
+        .fs-larger { font-size: var(--fs-larger); }
+        .fs-xl { font-size: var(--fs-xl); }
+        .fs-l { font-size: var(--fs-l); }
+        .fs-m { font-size: var(--fs-m); }
+        .fs-mm { font-size: var(--fs-mm); }
+        .fs-sm { font-size: var(--fs-sm); }
+        .fs-s { font-size: var(--fs-s); }
+        .fs-ms { font-size: var(--fs-ms); }
+        .fs-xs { font-size: var(--fs-xs); }
+
+        .fw-bold { font-weight: var(--fw-bold); }
+        .fw-semi-bold { font-weight: var(--fw-semi-bold); }
+        .fw-normal-bolder { font-weight: var(--fw-normal-bolder); }
+        .fw-normal { font-weight: var(--fw-normal); }
+        .fw-light { font-weight: var(--fw-light); }
+</style>
+<body>
+    
+    <!-- -->
+    <h6 style="margin-top:2em;">Gray Colors</h6>
+    <div class="flex-center width-100 gap-100">
+        <div class="color-box rgba-gray-much-darker-opacity">Much Darker Opacity</div>
+        <div class="color-box rgba-gray-darker-opacity">Darker Opacity</div>
+        <div class="color-box rgba-gray-much-darker">Much Darker</div>
+        <div class="color-box rgba-gray-med-darker">Med Darker</div>
+        <div class="color-box rgba-gray-darker">Darker</div>
+        <div class="color-box rgba-gray">Gray</div>
+        <div class="color-box rgba-gray-soft">Gray Soft</div>
+        <div class="color-box rgba-gray-softer">Gray Softer</div>
+        <div class="color-box gray-darker">Gray Darker</div>
+        <div class="color-box gray">Gray</div>
+        <div class="color-box gray-softer">Gray Softer</div>
+        <div class="color-box gray-much-softer">Much Softer</div>
+    </div>
+
+    <div>
+        <h6 style="margin-top:2em;">Font Sizes</h6>
+        <div class="font-box fs-h1">Heading 1</div>
+        <div class="font-box fs-h2">Heading 2</div>
+        <div class="font-box fs-h3">Heading 3</div>
+        <div class="font-box fs-h4">Heading 4</div>
+        <div class="font-box fs-h5">Heading 5</div>
+        <div class="font-box fs-h6">Heading 6</div>
+    
+        <div class="font-box fs-larger">Larger Font</div>
+        <div class="font-box fs-xl">Extra Large Font</div>
+        <div class="font-box fs-l">Large Font</div>
+        <div class="font-box fs-m">Medium Font</div>
+        <div class="font-box fs-mm">Medium Minus Font</div>
+        <div class="font-box fs-main">Main Font Size</div>
+        <div class="font-box fs-sm">Small Font</div>
+        <div class="font-box fs-s">Smaller Font</div>
+        <div class="font-box fs-ms">Medium Small Font</div>
+        <div class="font-box fs-xs">Extra Small Font</div>
+    </div>
+
+    <div>
+        <h6 style="margin-top:2em;">Font Weights</h6>
+        <div class="font-box fw-bold">Bold Font Weight</div>
+        <div class="font-box fw-semi-bold">Semi-Bold Font Weight</div>
+        <div class="font-box fw-normal-bolder">Normal Bolder Font Weight</div>
+        <div class="font-box fw-normal">Normal Font Weight</div>
+        <div class="font-box fw-light">Light Font Weight</div>
+    </div>
+</body>
+</html>
