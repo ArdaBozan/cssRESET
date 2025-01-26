@@ -12,6 +12,9 @@
     :root{
         --clr-accent: #1e1e1e;
         --clr-btn-hover: #363636;
+
+        --btn-border: 2px solid #1e1e1e;
+        --input-border: 1.5px solid #dcdcdc;
     }
 
     body{
@@ -176,6 +179,88 @@
             <p>Görsel Seçin</p>
             </label>
         </div>
+    </div>
+
+    <div class="flex-column g-100 fit-content">
+        <h6 style="margin-top:2em;">Input Block</h6>
+        <div class="input-block">
+            <label for="input">Title</label>
+            <input type="text" placeholder="input">
+        </div>
+    </div>
+
+    <div class="flex-column g-100 fit-content">
+        <h6 style="margin-top:2em;">Dropdown</h6>
+        <div class="dropdown" title="" data-index="1">
+            <label name="" id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
+                <p name="">1 Sütün Dropdown</p>
+                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
+                </svg>
+            </label>
+            <div class="dropdown-items " data-index="1">
+                <span>Örnek 1</span>
+                <span>Örnek 2</span>
+                <span>Örnek 3</span>
+                <span>Örnek 4</span>
+            </div>
+        </div>
+
+        <div class="dropdown" title="" data-index="1">
+            <label name="" id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
+                <p name="">2 Sütün Dropdown</p>
+                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
+                </svg>
+            </label>
+            <div class="dropdown-items " data-type="med-dropdown-list" data-index="1">
+                <span>Örnek 1</span>
+                <span>Örnek 2</span>
+                <span>Örnek 3</span>
+                <span>Örnek 4</span>
+            </div>
+        </div>  
+        
+        <div class="dropdown" title="" data-index="1">
+            <label name="" id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
+                <p name="">3 Sütün Dropdown</p>
+                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
+                </svg>
+            </label>
+            <div class="dropdown-items " data-type="long-dropdown-list" data-index="1">
+                <span>Örnek 1</span>
+                <span>Örnek 2</span>
+                <span>Örnek 3</span>
+                <span>Örnek 4</span>
+            </div>
+        </div>  
+
+        <div class="dropdown" title="" data-index="1">
+            <label name="" id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
+                <p name="">Çok Uzun 4 Sütün Dropdown</p>
+                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
+                </svg>
+            </label>
+            <div class="dropdown-items " data-type="longer-dropdown-list" data-index="1">
+                <span>Örnek 1</span>
+                <span>Örnek 2</span>
+                <span>Örnek 3</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+                <span>Örnek 4</span>
+            </div>
+        </div>  
     </div>
  </main>
 
