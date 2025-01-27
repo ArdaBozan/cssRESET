@@ -153,13 +153,6 @@ input[type=number] {
 
     /* Background Colors */
     --clr-bg: hsl(0, 0%, 100%);
-    
-    --modal-bg: hsla(0, 0%, 0%, .3); /* Set bg color */
-    --modal-content-bg: #fff; /* Set modal bg color */
-
-    --modal-content-padding: ; /* Set padding */
-    --modal-content-radius: ; /* Set radius */
-    --modal-content-border: ; /* Set border */
 
 
     /* Primary Colors */
@@ -172,11 +165,21 @@ input[type=number] {
 
 
     /* Dropdown */
-    --dropdown-bg: hsl(0, 0%, 100%); 
-    --dropdown-clr: hsl(0, 0%, 38%);
-    --dropdown-hover: hsl(0, 0%, 94%);
-    --dropdown-padding: .85em 1.2em;
+    --dropdown-bg: ;            /* Recommended Color: hsl(0, 0%, 100%) */
+    --dropdown-clr: ;           /* Recommended Color: hsl(0, 0%, 38%)*/
+    --dropdown-hover: ;         /* Recommended Color: hsl(0, 0%, 94%) */
+    --dropdown-padding: ;       /* Recommended Padding: .85em 1.2em */
     --dropdown-shadow: ;
+
+    
+    /* Modal */
+    --modal-bg: ;               /* Set bg color */
+    --modal-content-bg: ;       /* Set modal bg color */
+
+    --modal-content-padding: ;  /* Set padding */
+    --modal-content-radius: ;   /* Set radius */
+    --modal-content-border: ;   /* Set border */
+    --modal-content-clr: ;      /* Set color */
 
 
     /* Accent Colors */
@@ -228,30 +231,30 @@ input[type=number] {
 
 
     /* Input */
-    --input-bg-hover: ; /* Set color */
-    --input-file-bg-hover: var(--clr-rgba-gray-softer);
+    --input-bg-hover: ;         /* Set color */
+    --input-file-bg-hover: ;    /* Set color ( Recommended: rgba(0,0,0,0.05) );*/
     
-    --input-clr: ;
+    --input-clr: ;              /* Set color */
 
-    --input-border: ;
-    --input-border-radius: 10px;
-    --input-padding: .65em 1.2em;
+    --input-border: ;           /* Recommended Border: 1.5px solid #dcdcdc */
+    --input-border-radius: ;    /* Recommended Radius: 10px */
+    --input-padding: ;          /* Recommended Padding: .65em 1.2em */
 
     
     /* Input File */
-    --input-clr-file: hsl(0, 0%, 34%);
+    --input-clr-file: ;         /* Set color ( Recommended: hsl(0, 0%, 34%) );*/
 
 
     /* Input Range */
-    --input-range-color: #000; /* Set input range color */
-    --input-range-null-color: #afafaf; /* Set input range color (null) */
+    --input-range-color: #000;            /* Set input range color */
+    --input-range-null-color: #afafaf;    /* Set input range color (null) */
 
-    --input-range-bar-size: 8px; /* Set input range bar size */
+    --input-range-bar-size: 8px;            /* Set input range bar size */
 
-    --input-range-thumb-color: #727272; /* Set input range thumb color */
-    --input-range-price-color: #2b2b2b; /* Set input range price color */
+    --input-range-thumb-color: #727272;   /* Set input range thumb color */
+    --input-range-price-color: #2b2b2b;   /* Set input range price color */
 
-    --input-range-thumb-size: 20px; /* Set input range thumb size */
+    --input-range-thumb-size: 20px;         /* Set input range thumb size */
 
 
     /* Fast Shadows */
@@ -1018,6 +1021,7 @@ input[type=range]::-moz-range-thumb {
   padding: var(--modal-content-padding);
   border-radius: var(--modal-content-radius);
   border: var(--modal-content-border);
+  color: var(--modal-content-clr);
 
   /* You can set custom animations here */
   scale: .95;
@@ -1036,6 +1040,11 @@ input[type=range]::-moz-range-thumb {
 
 
 /* Alert Styling starts here*/
+.alertContainer{
+  position: fixed;
+  background-color: var(--alert-bg);
+  color: var(--alert-clr);
+}
 
 
 /* Page Styling */

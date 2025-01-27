@@ -26,9 +26,22 @@
         --input-clr: hsl(0, 0%, 24%);
         --input-bg-hover: #f7f7f7;
 
+        --input-file-bg-hover: var(--clr-rgba-gray-softer);
+
+        --modal-bg: hsla(0, 0%, 0%, .3); /* Set bg color */
+        --modal-content-bg: #fff; /* Set modal bg color */
         --modal-content-padding: 1.2em; /* Set padding */
         --modal-content-radius: 10px; /* Set radius */
 
+        --dropdown-bg: hsl(0, 0%, 100%);   
+    --dropdown-clr: hsl(0, 0%, 38%);   
+    --dropdown-hover: hsl(0, 0%, 94%); 
+    --dropdown-padding: .85em 1.2em; 
+
+
+    --input-border-radius: 10px;  /* Recommended Radius: 10px */
+    --input-padding: .65em 1.2em;
+    --input-clr-file: hsl(0, 0%, 34%);   
     }
 
     body{
@@ -297,7 +310,11 @@
     </div>
 
     <div class="flex-column g-100 fit-content">
-        <h6 style="margin-top:2em;">Full Screen Modal</h6>
+        <h6 style="margin-top:2em;">Alerts</h6>
+        <button class="alertContainer alertBottomLeft">Alert Bottom Left</button>
+        <button class="alertContainer alertBottomRight">Alert Bottom Right</button>
+        <button class="alertContainer alertTopLeft">Alert Top Left</button>
+        <button class="alertContainer alertTopRight">Alert Top Right</button>
     </div>
  </main>
 
