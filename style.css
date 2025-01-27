@@ -151,8 +151,15 @@ input[type=number] {
     --fs-input: var(--fs-ms);
 
 
-    /* Background Color */
+    /* Background Colors */
     --clr-bg: hsl(0, 0%, 100%);
+    
+    --modal-bg: hsla(0, 0%, 0%, .3); /* Set bg color */
+    --modal-content-bg: #fff; /* Set modal bg color */
+
+    --modal-content-padding: ; /* Set padding */
+    --modal-content-radius: ; /* Set radius */
+    --modal-content-border: ; /* Set border */
 
 
     /* Primary Colors */
@@ -554,6 +561,14 @@ input[type="radio"]{
 .center-self{
     margin-inline: auto;
     justify-self: center;
+}
+
+.start-self{
+    justify-self: start;
+}
+
+.end-self{
+    justify-self: end;
 }
 
 .text-center{
@@ -965,6 +980,55 @@ input[type=range]::-moz-range-thumb {
 .inputfile + label * {
 	pointer-events: none;
 }
+
+
+/* Modal Styling starts here*/
+.fullScreenModal{
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  background-color: var(--modal-bg);
+
+  /* You can set custom animations here */
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+
+  /* justify-content: start; */ /* Add this if you want to align the modal to the start */
+  /* justify-content: end;*/ /* Add this if you want to align the modal to the end */
+  /* align-items: start; */ /* Add this if you want to align the modal to the start */
+  /* align-items: end; */ /* Add this if you want to align the modal to the end */
+}
+
+.show-fullScreenModal{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: inherit;
+}
+
+.fullScreenModal .modalContent{
+  background-color: var(--modal-content-bg);
+  padding: var(--modal-content-padding);
+  border-radius: var(--modal-content-radius);
+  border: var(--modal-content-border);
+
+  /* You can set custom animations here */
+  scale: .95;
+  transition: var(--transition);
+
+  /* justify-self: stretch; */ /* Add this if you want to stretch the modal (100% width) */
+  /* align-self: stretch; */ /* Add this if you want to stretch the modal (100% height) */
+}
+
+.fullScreenModal .show-modalContent{
+  scale: 1;
+}
+
+/* MODAL STYLING ENDS HERE (don't forget to include the "fullScreenModal.js" file in your HTML, otherwise it will not gonna work) */
+/* Button (or anything) with "active-modal" class required. */
 
 
 /* Page Styling */

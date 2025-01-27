@@ -26,6 +26,9 @@
         --input-clr: hsl(0, 0%, 24%);
         --input-bg-hover: #f7f7f7;
 
+        --modal-content-padding: 1.2em; /* Set padding */
+        --modal-content-radius: 10px; /* Set radius */
+
     }
 
     body{
@@ -287,11 +290,27 @@
             </div>
         </div>
     </div>
+
+    <div class="flex-column g-100 fit-content">
+        <h6 style="margin-top:2em;">Full Screen Modal</h6>
+        <button class="active-modal">Active Modal</button>
+    </div>
+
+    <div class="flex-column g-100 fit-content">
+        <h6 style="margin-top:2em;">Full Screen Modal</h6>
+    </div>
  </main>
+
+ <div class="fullScreenModal">
+    <div class="modalContent">
+        <h6>Content Here</h6>
+    </div>
+ </div>
 
  <script src="Javascript Files/inputFile.js"></script>
  <script src="Javascript Files/inputRange.js"></script>
  <script src="Javascript Files/dropdown.js"></script>
  <script src="Javascript Files/inputNumeric.js"></script>
+ <script src="Javascript Files/fullScreenModal.js"></script>
 </body>
 </html>
