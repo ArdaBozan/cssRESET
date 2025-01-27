@@ -15,11 +15,15 @@ h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p,
 figure,
 blockquote,
 dl,
-dd {
+dd,
+small,
+span {
   margin-block-end: 0;
 }
 
@@ -42,10 +46,10 @@ body {
   line-height: 1.5;
 }
 
-/* A elements that don't have a class get default styles */
+/* A elements that don't have a class get default styles 
 a:not([class]) {
   text-decoration-skip-ink: auto;
-}
+}*/
 
 /* Make images easier to work with */
 img,
@@ -196,7 +200,7 @@ input[type=number] {
 
     --btn-bg: ;
     --btn-bg-hover: ;
-    --btn-bg-txt: ;
+    --btn-txt: ;
     
     --btn-border-gray: var(--clr-rgba-gray-soft);
 
@@ -208,8 +212,16 @@ input[type=number] {
     --btn-padding: .45em 1em;
 
 
+    /* Secondary Button */
+    --btn-secondary-bg: ;
+    --btn-secondary-bg-hover: ;
+    --btn-secondary-txt: ;
+    
+    --btn-secondary-border-clr: ;
+
+
     /* Input */
-    --input-bg-hover: var(--clr-rgba-gray-softer);
+    --input-bg-hover: ; /* Set color */
     --input-file-bg-hover: var(--clr-rgba-gray-softer);
     
     --input-clr: ;
@@ -279,7 +291,7 @@ a.buttonLink{
     background-color: var(--btn-bg);
     font-size: var(--fs-main);
     border-radius: var(--btn-border-radius);
-    color: var(--btn-bg-txt);
+    color: var(--btn-txt);
     border: var(--btn-border);
 }
 
@@ -318,8 +330,17 @@ button:is(.secondaryBtn)[type="submit"],
 button:is(.secondaryBtn)[type="button"],
 input:is(.secondaryBtn)[type="button"],
 input:is(.secondaryBtn)[type="submit"]{
-  background-color: ;
-  color: ;
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-txt);
+  border-color: var(--btn-secondary-border-clr);
+}
+
+button:is(.secondaryBtn):is(:hover,:focus-visible),
+button:is(.secondaryBtn)[type="submit"]:is(:hover,:focus-visible),
+button:is(.secondaryBtn)[type="button"]:is(:hover,:focus-visible),
+input:is(.secondaryBtn)[type="button"]:is(:hover,:focus-visible),
+input:is(.secondaryBtn)[type="submit"]:is(:hover,:focus-visible){
+  background-color: var(--btn-secondary-hover);
 }
 
 button:is(.btnGray, .btnGrayBorderless),
