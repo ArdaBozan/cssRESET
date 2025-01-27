@@ -246,8 +246,12 @@ input[type=number] {
     --input-range-color: #000; /* Set input range color */
     --input-range-null-color: #afafaf; /* Set input range color (null) */
 
+    --input-range-bar-size: 8px; /* Set input range bar size */
+
     --input-range-thumb-color: #727272; /* Set input range thumb color */
     --input-range-price-color: #2b2b2b; /* Set input range price color */
+
+    --input-range-thumb-size: 20px; /* Set input range thumb size */
 
 
     /* Fast Shadows */
@@ -904,7 +908,7 @@ a.transparent-a{
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
-  height: 5px;
+  height: var(--input-range-bar-size);
   background: linear-gradient(to right, var(--input-range-color), var(--input-range-null-color));
   border-radius: 5px;
   outline: none;
@@ -913,21 +917,21 @@ input[type=range] {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 17px;
-  height: 17px;
+  width: var(--input-range-thumb-size);
+  height: var(--input-range-thumb-size);
   border-radius: 50%;
   background: var(--input-range-thumb-color);
-  cursor: pointer;
+  cursor: url('cursor-pointer.svg'), pointer;
   border: 3px solid var(--clr-bg);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 input[type=range]::-moz-range-thumb {
-  width: 17px;
-  height: 17px;
+  width: var(--input-range-thumb-size);
+  height: var(--input-range-thumb-size);
   border-radius: 50%;
   background: var(--input-range-thumb-color);
-  cursor: pointer;
+  cursor: url('cursor-pointer.svg'), pointer;
   border: 3px solid var(--clr-bg);
 }
 
@@ -1029,6 +1033,9 @@ input[type=range]::-moz-range-thumb {
 
 /* MODAL STYLING ENDS HERE (don't forget to include the "fullScreenModal.js" file in your HTML, otherwise it will not gonna work) */
 /* Button (or anything) with "active-modal" class required. */
+
+
+/* Alert Styling starts here*/
 
 
 /* Page Styling */
