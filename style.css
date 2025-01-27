@@ -144,11 +144,21 @@ input[type=number] {
     --fs-ms: clamp(0.7em, 1.5vw, 0.9em);
     --fs-xs: clamp(0.6em, 1.2vw, 0.8em);
 
+    --fs-input: var(--fs-ms);
+
+
+    /* Background Color */
+    --clr-bg: hsl(0, 0%, 100%);
+
+
+    /* Primary Colors */
     --clr-light: hsl(0, 0%, 100%);
     --clr-dark: hsl(0, 0%, 0%);
 
 
+    /* Text Color */
     --clr-txt: ;
+
 
     /* Dropdown */
     --bg-dropdown: hsl(0, 0%, 100%); 
@@ -157,6 +167,8 @@ input[type=number] {
     --padding-dropdown: .85em 1.2em;
     --shadow-dropdown: ;
 
+
+    /* Accent Colors */
     --clr-accent: ;
     
     --clr-accent-100: ;
@@ -171,13 +183,53 @@ input[type=number] {
     --clr-accent-lighter: ;
     --clr-accent-darker: ;
 
+    
+    /* Gradient Colors */
     --gradient-primary-y: ;
     --gradient-primary-x: ;
     
     --gradient-btn: ;
 
-    --clr-btn: ;
+
+    /* Button */
+    --btn-border: ;
+
+    --clr-btn-bg: ;
     --clr-btn-hover: ;
+    --clr-btn-txt: ;
+    
+    --btn-border-gray: var(--clr-rgba-gray-soft);
+
+    --border-radius-main: 20px;
+    --border-radius-btn: 10px;
+    --border-radius-btn-smooth: 12px;
+    --border-radius-btn-sharp: 5px;
+    
+    --button-padding: .45em 1em;
+
+
+    /* Input */
+    --input-bg-hover: var(--clr-rgba-gray-softer);
+    --input-file-bg-hover: var(--clr-rgba-gray-softer);
+    
+    --clr-input: ;
+
+    --input-border: ;
+    --input-border-radius: 10px;
+    --input-padding: .65em 1.2em;
+
+    
+    /* Input File */
+    --clr-input-file: hsl(0, 0%, 34%);
+
+
+    /* Input Range */
+    --input-range-color: #000; /* Set input range color */
+    --input-range-null-color: #afafaf; /* Set input range color (null) */
+
+    --input-range-thumb-color: #727272; /* Set input range thumb color */
+    --input-range-price-color: #2b2b2b; /* Set input range price color */
+
 
     /* Fast Shadows */
     --clr-rgba-gray-much-darker-opacity: rgba(48, 48, 48, 0.9); 
@@ -196,23 +248,14 @@ input[type=number] {
 
 
 
-    --input-border: ;
-
-    --input-border-radius: 10px;
-
-    --input-padding: .65em 1.2em;
+   
 
 
-    --btn-border: ;
-    --btn-border-gray: var(--clr-rgba-gray-soft);
 
 
-    --border-radius-main: 20px;
-    --border-radius-btn: 10px;
-    --border-radius-btn-smooth: 12px;
-    --border-radius-btn-sharp: 5px;
 
-    --button-padding: .45em 1em;
+
+    
 
     --transition: .3s;
 }
@@ -242,10 +285,10 @@ a.buttonLink{
     align-items: center;
     gap: .5em;
     font-weight: var(--fw-normal);
-    background-color: var(--clr-accent);
+    background-color: var(--clr-btn-bg);
     font-size: var(--fs-main);
     border-radius: var(--border-radius-btn);
-    color: var(--clr-light);
+    color: var(--clr-btn-txt);
     border: var(--btn-border);
 }
 
@@ -321,18 +364,20 @@ textarea{
   justify-content: start;
   align-items: center;
   resize: none;
-  font-size: var(--fs-ms);
+  font-size: var(--fs-input);
   caret-color: var(--clr-accent);
   padding: var(--input-padding);
   background-color: var(--clr-light);
   border: var(--input-border);
   border-radius: var(--input-border-radius);
-  color: var(--clr-txt);
+  color: var(--clr-input);
+  transition: var(--transition);
 }
 
 /* Input Hover */
-input:not([type="button"], [type="submit"], [type="range"]):is(:focus,:focus-visible),
-textarea:is(:focus,:focus-visible){ 
+input:not([type="button"], [type="submit"], [type="range"]):hover,
+textarea:hover{ 
+  background-color: var(--input-bg-hover);
 }
 
 /* Input's Placeholder while its active */
@@ -681,7 +726,7 @@ a.transparent-a{
   max-height: fit-content;
   color: var(--clr-dropdown);
   user-select: none;
-  font-size: var(--fs-ms);
+  font-size: var(--fs-input);
 }
 
 .dropdown label{
@@ -824,11 +869,16 @@ a.transparent-a{
   color: var(--clr-gray-darker);
 }
 
+.price-range-area p{
+  font-size: var(--fs-xs);
+  opacity: .9;
+}
+
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
-  height: 10px;
-  background: linear-gradient(to right, red, red);
+  height: 5px;
+  background: linear-gradient(to right, var(--input-range-color), var(--input-range-null-color));
   border-radius: 5px;
   outline: none;
 }
@@ -836,22 +886,37 @@ input[type=range] {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
-  background: #4e4e4e;
+  background: var(--input-range-thumb-color);
   cursor: pointer;
-  border: 3px solid white;
+  border: 3px solid var(--clr-bg);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 input[type=range]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
-  background: #4e4e4e;
+  background: var(--input-range-thumb-color);
   cursor: pointer;
-  border: 3px solid white;
+  border: 3px solid var(--clr-bg);
+}
+
+.price-text {
+  position: relative;
+  margin-top: 30px;
+}
+
+#priceLabel {
+  left: 0;
+  position: absolute;
+  top: -30px;
+  font-size: 16px;
+  color: var(--input-range-price-color);
+  font-weight: bold;
+  transition: left 0.1s ease-in-out;
 }
 
 .inputfile {
@@ -869,38 +934,24 @@ input[type=range]::-moz-range-thumb {
   justify-content: start;
   align-items: center;
   gap: .7em;
-  color: var(--clr-txt);
+  color: var(--clr-input-file);
   font-weight: var(--fw-normal-bolder);
-  border: 2.35px solid var(--clr-rgba-gray);
   border: var(--input-border);
-  padding: .85em 1.2em;
-  border-radius: 10px;
+  border: var(--input-border);
+  padding: var(--input-padding);
+  border-radius: var(--input-border-radius);
   transition: var(--transition);
   user-select: none;
+  font-size: var(--fs-input);
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-  background-color: var(--clr-rgba-gray-softer);
+  background-color: var(--input-file-bg-hover);
 }
 
 .inputfile + label * {
 	pointer-events: none;
-}
-
-.price-text {
-  position: relative;
-  margin-top: 30px;
-}
-
-#priceLabel {
-  left: 0;
-  position: absolute;
-  top: -30px;
-  font-size: 16px;
-  color: #333;
-  font-weight: bold;
-  transition: left 0.1s ease-in-out;
 }
 
 
@@ -910,7 +961,8 @@ body{
   font-family: var(--ff-main);
   font-size: var(--fs-main);
   font-weight: var(--fw-normal);
-  color: var(--clr-dark);
+  color: var(--clr-txt);
+  background-color: var(--clr-bg);
 }
 
 body.noScrollBody{
