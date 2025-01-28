@@ -42,6 +42,14 @@
     --input-border-radius: 10px;  /* Recommended Radius: 10px */
     --input-padding: .65em 1.2em;
     --input-clr-file: hsl(0, 0%, 34%);   
+
+    --alert-bg: #fff;               /* Set bg color */
+    --alert-clr: #000;              /* Set color */
+    
+    --alert-border: 1px solid red;           /* Set border */
+    --alert-radius: 10px ;           /* Set border radius */
+
+    --alert-padding: 1em;            /* Set padding */
     }
 
     body{
@@ -311,10 +319,14 @@
 
     <div class="flex-column g-100 fit-content">
         <h6 style="margin-top:2em;">Alerts</h6>
-        <button class="alertContainer alertBottomLeft">Alert Bottom Left</button>
-        <button class="alertContainer alertBottomRight">Alert Bottom Right</button>
-        <button class="alertContainer alertTopLeft">Alert Top Left</button>
-        <button class="alertContainer alertTopRight">Alert Top Right</button>
+        <button class="showAlerts">Show Alerts (3 Seconds)</button>
+        <div class="alertContainer alertBottomLeft">Alert Bottom Left</div>
+        <div class="alertContainer alertBottomRight">Alert Bottom Right</div>
+        <div class="alertContainer alertTopLeft">Alert Top Left</div>
+        <div class="alertContainer alertTopRight">Alert Top Right</div>
+        <div class="alertContainer alertTop">Alert Top</div>
+        <div class="alertContainer alertBottom">Alert Bottom</div>
+        <div class="alertContainer alertCenter">Alert Center</div>
     </div>
  </main>
 
@@ -329,5 +341,6 @@
  <script src="Javascript Files/dropdown.js"></script>
  <script src="Javascript Files/inputNumeric.js"></script>
  <script src="Javascript Files/fullScreenModal.js"></script>
+ <script src="Javascript Files/alert.js"></script>
 </body>
 </html>
