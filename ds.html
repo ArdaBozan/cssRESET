@@ -1,237 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madde İşaretli Liste</title>
     <style>
-    @font-face {
-    font-family: 'sourcesanspro';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    src: url(https://design.penpot.app/fonts/sourcesanspro-regular.woff) format('woff');
-  }
-
-html, body {
-  margin: 0;
-  min-height: 100%;
-  min-width: 100%;
-  padding: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-  min-height: 100vh;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.text-node { background-clip: text !important; -webkit-background-clip: text !important; }
-
-/* Board */
-.board-a6893d46e293 {
-  position: relative;
-  width: 100%;
-  background: #2B2B2B;
-  overflow: hidden;
-  display: flex;
-  align-items: start;
-  align-content: stretch;
-  justify-content: start;
-  padding: 122.96px 268.35px 122.96px 268.35px;
-  z-index: 0;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-}
-
-/* Board */
-.board-a6895c73bdc9 {
-  position: relative;
-  height: auto;
-  border-radius: 0px;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  column-gap: 136.14px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex: 1;
-}
-
-/* Merhaba */
-.merhaba-a6893f6e0f15 {
-  width: 379.67px;
-  height: 123.89px;
-  flex-shrink: 0;
-}
-.merhaba-a6893f6e0f15 .root-0 {
-  
-  
-  display: flex;
-  white-space: break-spaces;
-  align-items: flex-start;
-}
-.merhaba-a6893f6e0f15 .root-0-paragraph-set-0 {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: inherit;
-  min-width: 100%;
-  margin-right: 1px;
-  vertical-align: top;
-}
-.merhaba-a6893f6e0f15 .root-0-paragraph-set-0-paragraph-0 {
-  font-size: 0;
-  line-height: 1.2;
-  margin: 0;
-  text-align: left;
-}
-.merhaba-a6893f6e0f15 .root-0-paragraph-set-0-paragraph-0-text-0 {
-  color: rgba(255, 255, 255, 1);
-  text-transform: none;
-  
-  line-break: auto;
-  overflow-wrap: initial;
-  white-space: break-spaces;
-  font-size: 102.19427247180981px;
-  text-rendering: geometricPrecision;
-  caret-color: rgba(255, 255, 255, 1);
-  text-decoration: none;
-  letter-spacing: 0px;
-  font-family: "sourcesanspro";
-  font-style: normal;
-  font-weight: 400;
-}
-
-/* Merhaba */
-.merhaba-a6894b57de68 {
-  width: 379.67px;
-  height: 123.89px;
-  flex-shrink: 0;
-}
-.merhaba-a6894b57de68 .root-0 {
-  
-  
-  display: flex;
-  white-space: break-spaces;
-  align-items: flex-start;
-}
-.merhaba-a6894b57de68 .root-0-paragraph-set-0 {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: inherit;
-  min-width: 100%;
-  margin-right: 1px;
-  vertical-align: top;
-}
-.merhaba-a6894b57de68 .root-0-paragraph-set-0-paragraph-0 {
-  font-size: 0;
-  line-height: 1.2;
-  margin: 0;
-  text-align: left;
-}
-.merhaba-a6894b57de68 .root-0-paragraph-set-0-paragraph-0-text-0 {
-  color: rgba(255, 255, 255, 1);
-  text-transform: none;
-  
-  line-break: auto;
-  overflow-wrap: initial;
-  white-space: break-spaces;
-  font-size: 102.19427247180981px;
-  text-rendering: geometricPrecision;
-  caret-color: rgba(255, 255, 255, 1);
-  text-decoration: none;
-  letter-spacing: 0px;
-  font-family: "sourcesanspro";
-  font-style: normal;
-  font-weight: 400;
-}
-
-/* Merhaba */
-.merhaba-a6894eeb5395 {
-  width: 379.67px;
-  height: 123.89px;
-  flex-shrink: 0;
-}
-.merhaba-a6894eeb5395 .root-0 {
-  
-  
-  display: flex;
-  white-space: break-spaces;
-  align-items: flex-start;
-}
-.merhaba-a6894eeb5395 .root-0-paragraph-set-0 {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: inherit;
-  min-width: 100%;
-  margin-right: 1px;
-  vertical-align: top;
-}
-.merhaba-a6894eeb5395 .root-0-paragraph-set-0-paragraph-0 {
-  font-size: 0;
-  line-height: 1.2;
-  margin: 0;
-  text-align: left;
-}
-.merhaba-a6894eeb5395 .root-0-paragraph-set-0-paragraph-0-text-0 {
-  color: rgba(255, 255, 255, 1);
-  text-transform: none;
-  
-  line-break: auto;
-  overflow-wrap: initial;
-  white-space: break-spaces;
-  font-size: 102.19427247180981px;
-  text-rendering: geometricPrecision;
-  caret-color: rgba(255, 255, 255, 1);
-  text-decoration: none;
-  letter-spacing: 0px;
-  font-family: "sourcesanspro";
-  font-style: normal;
-  font-weight: 400;
-}
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 100px;
+            margin-top: 10px;
+            background: #f9f9f9;
+            font-size: 16px;
+        }
     </style>
-  </head>
-  <body>
-  <!-- frame: Board -->
-<div class="frame board-a6893d46e293">
-  <!-- frame: Board -->
-  <div class="frame board-a6895c73bdc9">
-    <!-- text: Merhaba -->
-    <div class="shape text merhaba-a6894eeb5395">
-      <div class="text-node-html" id="html-text-node-5c244f68-eb23-809b-8005-a6894eeb5395" data-x="357.3495547742847" data-y="184.96448703494931">
-        <div class="root rich-text root-0" style="display:flex;white-space:break-spaces;align-items:flex-start" xmlns="http://www.w3.org/1999/xhtml">
-          <div class="paragraph-set root-0-paragraph-set-0">
-            <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0" style="color:rgba(255, 255, 255, 1);text-transform:none;line-break:auto;overflow-wrap:initial;white-space:break-spaces;font-size:102.19427247180981px;text-rendering:geometricPrecision;caret-color:rgba(255, 255, 255, 1);text-decoration:none;--font-id:sourcesanspro;--fills:[[&quot;^ &quot;,&quot;~:fill-color&quot;,&quot;#ffffff&quot;,&quot;~:fill-opacity&quot;,1]];letter-spacing:0px;font-family:&quot;sourcesanspro&quot;;font-style:normal;font-weight:400">Merhaba</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- text: Merhaba -->
-    <div class="shape text merhaba-a6894b57de68">
-      <div class="text-node-html" id="html-text-node-5c244f68-eb23-809b-8005-a6894b57de68" data-x="873.1640329155282" data-y="184.9644870349493">
-        <div class="root rich-text root-0" style="display:flex;white-space:break-spaces;align-items:flex-start" xmlns="http://www.w3.org/1999/xhtml">
-          <div class="paragraph-set root-0-paragraph-set-0">
-            <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0" style="color:rgba(255, 255, 255, 1);text-transform:none;line-break:auto;overflow-wrap:initial;white-space:break-spaces;font-size:102.19427247180981px;text-rendering:geometricPrecision;caret-color:rgba(255, 255, 255, 1);text-decoration:none;--font-id:sourcesanspro;--fills:[[&quot;^ &quot;,&quot;~:fill-color&quot;,&quot;#ffffff&quot;,&quot;~:fill-opacity&quot;,1]];letter-spacing:0px;font-family:&quot;sourcesanspro&quot;;font-style:normal;font-weight:400">Merhaba</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- text: Merhaba -->
-    <div class="shape text merhaba-a6893f6e0f15">
-      <div class="text-node-html" id="html-text-node-5c244f68-eb23-809b-8005-a6893f6e0f15" data-x="1388.9785110567718" data-y="184.96448703494934">
-        <div class="root rich-text root-0" style="display:flex;white-space:break-spaces;align-items:flex-start" xmlns="http://www.w3.org/1999/xhtml">
-          <div class="paragraph-set root-0-paragraph-set-0">
-            <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="ltr"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0" style="color:rgba(255, 255, 255, 1);text-transform:none;line-break:auto;overflow-wrap:initial;white-space:break-spaces;font-size:102.19427247180981px;text-rendering:geometricPrecision;caret-color:rgba(255, 255, 255, 1);text-decoration:none;--font-id:sourcesanspro;--fills:[[&quot;^ &quot;,&quot;~:fill-color&quot;,&quot;#ffffff&quot;,&quot;~:fill-opacity&quot;,1]];letter-spacing:0px;font-family:&quot;sourcesanspro&quot;;font-style:normal;font-weight:400">Merhaba</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/F1cs6YzToOBfMYXNzMr5PX/Restorant-QR?node-id=0-1&embed-host=share" allowfullscreen></iframe>
-  </body>
+</head>
+<body>
+
+    <textarea id="inputText" placeholder="Buraya yazın veya yapıştırın..."></textarea>
+    <div class="output" id="formattedOutput"></div>
+
+    <script>
+        const inputText = document.getElementById("inputText");
+        const formattedOutput = document.getElementById("formattedOutput");
+
+        function formatText(text) {
+            text = text.trim();
+            if (text) {
+                return text.split("\n").map(line => line.trim() ? `• ${line.trim()}` : "").join("<br>");
+            }
+            return "";
+        }
+
+        inputText.addEventListener("input", function() {
+            formattedOutput.innerHTML = formatText(this.value);
+        });
+
+        inputText.addEventListener("paste", function(event) {
+            event.preventDefault(); // Varsayılan yapıştırma işlemini engelle
+            let pastedText = (event.clipboardData || window.clipboardData).getData("text");
+            this.value = pastedText.trim(); // Yapıştırılan metni temizle ve inputa ekle
+            formattedOutput.innerHTML = formatText(this.value);
+        });
+    </script>
+
+</body>
 </html>
