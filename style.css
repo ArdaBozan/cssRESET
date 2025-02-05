@@ -899,7 +899,6 @@ a.transparent-a{
 
 .dropdown .dropdown-items:is([data-type="long-dropdown-list"] ,[data-type="longer-dropdown-list"]) span{
   border-radius: 5px;
-  width: fit-content;
 }
 
 .dropdown label:hover{
