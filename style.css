@@ -158,6 +158,8 @@ input[type=number] {
     /* Primary Colors */
     --clr-light: hsl(0, 0%, 100%);
     --clr-dark: hsl(0, 0%, 0%);
+    
+    --clr-warning: hsl(0, 100%, 50%);
 
 
     /* Text Color */
@@ -824,6 +826,7 @@ a.transparent-a{
   width: 100%;
 }
 
+/* Dropdown list column number */
 .dropdown .dropdown-items[data-type="med-dropdown-list"] .dropdown-add-column{
   grid-column: span 2;
 }
@@ -835,6 +838,7 @@ a.transparent-a{
 .dropdown .dropdown-items[data-type="longer-dropdown-list"] .dropdown-add-column{
   grid-column: span 4;
 }
+/* You can add more */
 
 .dropdown .dropdown-items .dropdown-add-column .input-container {
   border-bottom: 2px solid var(--clr-rgba-gray-soft);
@@ -846,6 +850,7 @@ a.transparent-a{
   border: 0;
   width: 100%;
   padding-inline: 1em;
+  background-color: transparent;
 }
 
 .dropdown .dropdown-items .dropdown-add-column .input-container button{
@@ -909,6 +914,13 @@ a.transparent-a{
 .dropdown .dropdown-items span:hover{
   background-color: var(--dropdown-hover);
   color: var(--clr-gray-darker);
+}
+
+.dropdown .dropdown-items .no-match{
+  color: var(--clr-warning);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+  padding: 1em;
 }
 
 .price-range-area p{
