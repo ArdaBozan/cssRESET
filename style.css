@@ -286,6 +286,12 @@ input[type=number] {
 
     /* Transition */
     --transition: .3s;
+
+    /* Animation Transitions*/
+    --scale-animation: .3s;
+    --opacity-animation: .3s;
+    --text-animation: .3s;
+    
 }
 
 /* Header Texts */
@@ -1118,6 +1124,95 @@ input[type=range]::-moz-range-thumb {
 
 /* ALERT STYLING ENDS HERE (don't forget to include the "alert.js" file in your HTML, otherwise it won't work) */
 /* Button (or anything) with "showAlerts" class required. */
+
+/*-------------------------------------------------------- SCROLL ANIMATIONS --------------------------------------------------------*/
+/* Text Animation */
+.add-text-animation{
+  transform: translateY(-5px) !important;
+  opacity: 0 !important;
+
+  transition: var(--text-animation);
+}
+
+.text-animation-longer{ 
+  transform: translateY(-5px) !important;
+  opacity: 0 !important;
+  
+  transition: var(--text-animation-longer); 
+}
+
+.add-text-animation.text-animation{
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+
+/* Opacity Animation */
+.add-opacity-animation{
+  opacity: 0 !important;
+  
+  transition: var(--opacity-animation);
+}
+
+.add-opacity-animation.opacity-animation{
+  opacity: 1 !important;
+}
+
+
+/* Slide To Left Animation */
+.add-x-toLeft-animation{
+  transform: translateX(-10px) !important;
+  opacity: 0 !important;
+
+  transition: 1s ;
+}
+
+.add-x-toLeft-animation.x-toLeft-animation{
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+
+/* Slide To Right Animation */
+.add-x-toRight-animation{
+  transform: translateX(10px) !important;
+  opacity: 0 !important;
+  
+  transition: 1s ;
+}
+
+.add-x-toRight-animation.x-toRight-animation{
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+
+/* Scale Animation */
+.add-scale-animation{
+  scale: 0 !important;
+  opacity: 0 !important;
+
+  transition: var(--scale-animation);
+}
+
+.add-scale-animation.scale-animation{
+  scale: 1 !important;
+  opacity: 1 !important;
+}
+
+@media screen and (max-width: 1000px){
+    /* Optimized Scale Animation */
+    .add-scale-animation{
+      scale: .9 !important;
+      opacity: .9 !important;
+    }
+
+    .add-scale-animation.scale-animation{
+      scale: 1 !important;
+      opacity: 1 !important;
+    
+    }  
+}
 
 
 /* Page Styling */
