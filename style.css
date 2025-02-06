@@ -289,9 +289,11 @@ input[type=number] {
 
     /* Animation Transitions*/
     --scale-animation: .3s;
-    --opacity-animation: .3s;
-    --text-animation: .3s;
-    
+    --opacity-animation: .6s;
+    --text-animation: .5s;
+    --text-animation-longer: 1s;
+    --xl-animation: .5s;
+    --xr-animation: .5s;
 }
 
 /* Header Texts */
@@ -1164,7 +1166,7 @@ input[type=range]::-moz-range-thumb {
   transform: translateX(-10px) !important;
   opacity: 0 !important;
 
-  transition: 1s ;
+  transition: var(--xl-animation) ;
 }
 
 .add-x-toLeft-animation.x-toLeft-animation{
@@ -1178,7 +1180,7 @@ input[type=range]::-moz-range-thumb {
   transform: translateX(10px) !important;
   opacity: 0 !important;
   
-  transition: 1s ;
+  transition: var(--xr-animation);
 }
 
 .add-x-toRight-animation.x-toRight-animation{
