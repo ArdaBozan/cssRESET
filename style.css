@@ -567,8 +567,20 @@
         flex-direction: column;
     }
 
-    .align-top-self{
+    .align-self-top{
         align-self: start;
+    }
+
+    .align-self-bottom{
+      align-self: end;
+    }
+
+    .justify-self-start{
+    justify-self: start;
+    }
+
+    .justify-self-end{
+        justify-self: end;
     }
 
     .grid{
@@ -587,14 +599,6 @@
     .center-self{
         margin-inline: auto;
         justify-self: center;
-    }
-
-    .start-self{
-        justify-self: start;
-    }
-
-    .end-self{
-        justify-self: end;
     }
 
     .text-center{
@@ -1237,6 +1241,9 @@
       padding-block: 8em;
     }
 
+
+
+    /* Card Slider Styling */
     section.pureflowcss-card-slider-area{
       display: grid;
       place-items: center;
@@ -1407,6 +1414,10 @@
       border-bottom-right-radius: 15px;
     }
 
+    .pureflowcss-card-slider-card .pureflowcss-card-slider-info-area{
+      padding-inline: .5em;
+    }
+
     .pureflowcss-card-slider-card .pureflowcss-card-slider-info-area span{
       line-height: 1.3;
       display: -webkit-box;
@@ -1415,3 +1426,4 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    /* Card Slider Styling Ends */
