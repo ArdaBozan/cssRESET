@@ -1,4 +1,6 @@
+// Filtreleme, tıklama ve diğer olaylar için DOMContentLoaded içinde kuruluyor
 document.addEventListener("DOMContentLoaded", function () {
+    // Arama girişindeki filtreleme
     document.querySelectorAll("#active-search-input").forEach(input => {
         input.addEventListener("input", function () {
             const searchTerm = this.value.trim().toLowerCase();
@@ -30,11 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Dropdown açma/kapatma işlemleri
     document.querySelectorAll(".show-dropdown-items").forEach((button, index) => {
         button.addEventListener("click", function(event) {
             event.stopPropagation();
             const dropdownItems = document.querySelectorAll(".dropdown-items")[index];
 
+            // Diğer dropdown'ları kapat
             document.querySelectorAll(".dropdown-items").forEach((otherDropdownItems, otherIndex) => {
                 if (otherIndex !== index) {
                     otherDropdownItems.classList.remove("show-dropdown-list");
@@ -46,10 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll("#dropdownSvg")[index].classList.toggle("active-dropdownSvg");
 
             applyMinWidth(dropdownItems);
+            // Dropdown açıldıktan sonra konumlandırmayı kontrol et
             setTimeout(() => adjustDropdownType(dropdownItems), 100);
         });
     });
 
+    // Tıklama dışı kapanma işlemi
     document.addEventListener("click", function(event) {
         document.querySelectorAll(".dropdown-items").forEach((dropdownItems, index) => {
             const dropdownSvg = document.querySelectorAll("#dropdownSvg")[index];
@@ -60,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Dropdown içerisindeki seçeneklere tıklanma işlemi
     document.querySelectorAll(".dropdown-items").forEach((dropdownItems, index) => {
         dropdownItems.querySelectorAll("span").forEach(span => {
             span.addEventListener("click", function() {
@@ -73,36 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelectorAll(".dropdown-items").forEach(applyMinWidth);
-
-    // **Sayfa yüklendiğinde dropdown türünü kontrol et**
-    setTimeout(() => {
-        observeDropdowns();
-        resetDropdownsOnResize();
-    }, 200);
-
-    // **Ekran küçüldüğünde dropdown'ları sıfırla**
-    function resetDropdownsOnResize() {
-        document.querySelectorAll(".dropdown-items").forEach(dropdown => {
-            dropdown.classList.remove("show-dropdown-list"); // Açık dropdown'ları kapat
-            dropdown.removeAttribute("data-type"); // Data tipini sıfırla
-        });
-
-        document.querySelectorAll("#dropdownSvg").forEach(svg => {
-            svg.classList.remove("active-dropdownSvg"); // SVG ikonlarını sıfırla
-        });
-
-        observeDropdowns(); // Tekrar kontrol et
-    }
-
-    window.addEventListener("resize", function() {
-        setTimeout(resetDropdownsOnResize, 150); // Küçültme olayından sonra dropdown'ları sıfırla
-    });
-
-    window.addEventListener("DOMContentLoaded", function() {
-        setTimeout(observeDropdowns, 200);
-    });
 });
 
+
+// Dropdown'un ekran kenarına değip değmediğini kontrol edip data-type'ı değiştiren fonksiyon
 function adjustDropdownType(dropdown) {
     const rect = dropdown.getBoundingClientRect();
     const dropdownType = dropdown.getAttribute("data-type");
@@ -118,16 +99,42 @@ function adjustDropdownType(dropdown) {
     }
 }
 
+// Tüm dropdown'lar için adjustDropdownType fonksiyonunu çalıştırır
 function observeDropdowns() {
     document.querySelectorAll(".dropdown .dropdown-items").forEach(dropdown => {
         adjustDropdownType(dropdown);
     });
 }
 
-// **Sayfa yüklendiğinde, ekran yeniden boyutlandırıldığında ve kaydırıldığında çalıştır**
-window.addEventListener("resize", () => setTimeout(observeDropdowns, 100));
-window.addEventListener("scroll", () => setTimeout(observeDropdowns, 100));
-document.addEventListener("DOMContentLoaded", () => setTimeout(observeDropdowns, 200));
+// Dropdown'ları sıfırlayıp yeniden kontrol eden fonksiyon
+function resetDropdownsOnResize() {
+    document.querySelectorAll(".dropdown-items").forEach(dropdown => {
+        dropdown.classList.remove("show-dropdown-list"); // Açık dropdown'ları kapat
+        dropdown.removeAttribute("data-type");         // data-type'ı sıfırla
+    });
+    document.querySelectorAll("#dropdownSvg").forEach(svg => {
+        svg.classList.remove("active-dropdownSvg");      // SVG ikonlarını sıfırla
+    });
+    observeDropdowns(); // Tekrar kontrol et
+}
+
+// Sayfa tamamen yüklendikten sonra (tüm kaynaklar hazır) çalıştırıyoruz
+window.addEventListener("load", function() {
+    // Gerekirse setTimeout ile hafif gecikme eklenebilir (örneğin 100-200ms)
+    setTimeout(function() {
+        resetDropdownsOnResize();
+    }, 100);
+});
+
+// Ekran boyutu değiştiğinde dropdown'ları sıfırlıyoruz
+window.addEventListener("resize", function() {
+    resetDropdownsOnResize();
+});
+
+// Scroll sırasında da konumlandırmayı kontrol ediyoruz
+window.addEventListener("scroll", function() {
+    observeDropdowns();
+});
 
 
 
