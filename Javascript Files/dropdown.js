@@ -1,7 +1,39 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Orijinal data-type'ları sakla
+    // Orijinal data-type'ları sakla ve ilk ayarlamayı yap
     document.querySelectorAll(".dropdown-items").forEach(dropdown => {
         dropdown.setAttribute('data-original-type', dropdown.getAttribute('data-type'));
+
+        // Yeni eklenen kısım: Sayfa yüklendiğinde direkt olarak kontrol et
+        const tempCheck = () => {
+            // Dropdown'ın gerçek pozisyonunu ölçebilmek için geçici olarak görünür yap
+            const originalStyles = {
+                visibility: dropdown.style.visibility,
+                opacity: dropdown.style.opacity,
+                position: dropdown.style.position,
+                maxHeight: dropdown.style.maxHeight,
+                pointerEvents: dropdown.style.pointerEvents
+            };
+            
+            dropdown.style.cssText = `
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: absolute !important;
+                max-height: none !important;
+                pointer-events: none !important;
+            `;
+            
+            // Reflow tetikle
+            void dropdown.offsetHeight;
+            
+            // Sütun ayarlamasını yap
+            adjustColumnsBasedOnScreen(dropdown);
+            
+            // Stilleri eski haline getir
+            Object.assign(dropdown.style, originalStyles);
+        };
+        
+        // İlk kontroller için requestAnimationFrame kullan
+        window.requestAnimationFrame(tempCheck);
     });
 
     // Arama işlevselliği
