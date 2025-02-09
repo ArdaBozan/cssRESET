@@ -74,12 +74,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".dropdown-items").forEach(applyMinWidth);
 
-    observeDropdowns(); // Sayfa yüklendiğinde dropdown türünü kontrol et
+    // **Sayfa yüklendiğinde dropdown türünü kontrol et**
+    setTimeout(() => {
+        observeDropdowns();
+        resetDropdownsOnResize();
+    }, 200);
 
-    // **Sayfa yüklendiğinde ve ekran boyutu değiştiğinde dropdown'ları sıfırla**
+    // **Ekran küçüldüğünde dropdown'ları sıfırla**
     function resetDropdownsOnResize() {
         document.querySelectorAll(".dropdown-items").forEach(dropdown => {
-            dropdown.classList.remove("show-dropdown-list"); // Açık olan dropdown'ları kapat
+            dropdown.classList.remove("show-dropdown-list"); // Açık dropdown'ları kapat
             dropdown.removeAttribute("data-type"); // Data tipini sıfırla
         });
 
@@ -90,8 +94,13 @@ document.addEventListener("DOMContentLoaded", function () {
         observeDropdowns(); // Tekrar kontrol et
     }
 
-    window.addEventListener("resize", resetDropdownsOnResize);
-    window.addEventListener("DOMContentLoaded", observeDropdowns);
+    window.addEventListener("resize", function() {
+        setTimeout(resetDropdownsOnResize, 150); // Küçültme olayından sonra dropdown'ları sıfırla
+    });
+
+    window.addEventListener("DOMContentLoaded", function() {
+        setTimeout(observeDropdowns, 200);
+    });
 });
 
 function adjustDropdownType(dropdown) {
@@ -115,10 +124,10 @@ function observeDropdowns() {
     });
 }
 
-// Sayfa yüklendiğinde, ekran yeniden boyutlandırıldığında ve kaydırıldığında çalıştır
-window.addEventListener("resize", observeDropdowns);
-window.addEventListener("scroll", observeDropdowns);
-document.addEventListener("DOMContentLoaded", observeDropdowns);
+// **Sayfa yüklendiğinde, ekran yeniden boyutlandırıldığında ve kaydırıldığında çalıştır**
+window.addEventListener("resize", () => setTimeout(observeDropdowns, 100));
+window.addEventListener("scroll", () => setTimeout(observeDropdowns, 100));
+document.addEventListener("DOMContentLoaded", () => setTimeout(observeDropdowns, 200));
 
 
 
