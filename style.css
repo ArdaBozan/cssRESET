@@ -535,6 +535,10 @@
         align-items: center;
     }
 
+    .wrap{
+        flex-wrap: wrap;
+    }
+
     .flex-space{
       display: flex;
       align-items: center;

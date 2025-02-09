@@ -1,13 +1,17 @@
-// Filtreleme, tıklama ve diğer olaylar için DOMContentLoaded içinde kuruluyor
 document.addEventListener("DOMContentLoaded", function () {
-    // Arama girişindeki filtreleme
+    // Orijinal data-type'ları sakla
+    document.querySelectorAll(".dropdown-items").forEach(dropdown => {
+        dropdown.setAttribute('data-original-type', dropdown.getAttribute('data-type'));
+    });
+
+    // Arama işlevselliği
     document.querySelectorAll("#active-search-input").forEach(input => {
         input.addEventListener("input", function () {
             const searchTerm = this.value.trim().toLowerCase();
             const dropdownItems = this.closest(".dropdown-items");
             const spans = dropdownItems.querySelectorAll("span");
             let matchFound = false;
-            
+
             spans.forEach(span => {
                 const text = span.textContent.trim().toLowerCase();
                 if (searchTerm === "" || text.includes(searchTerm)) {
@@ -17,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     span.style.display = "none";
                 }
             });
-            
+
             let noMatchMessage = dropdownItems.querySelector(".no-match");
             if (!matchFound) {
                 if (!noMatchMessage) {
@@ -32,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Dropdown açma/kapatma işlemleri
+    // Dropdown açma/kapama işlevselliği
     document.querySelectorAll(".show-dropdown-items").forEach((button, index) => {
-        button.addEventListener("click", function(event) {
+        button.addEventListener("click", function (event) {
             event.stopPropagation();
             const dropdownItems = document.querySelectorAll(".dropdown-items")[index];
 
@@ -46,17 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
+            // Mevcut dropdown'u aç/kapat
             dropdownItems.classList.toggle("show-dropdown-list");
             document.querySelectorAll("#dropdownSvg")[index].classList.toggle("active-dropdownSvg");
 
-            applyMinWidth(dropdownItems);
-            // Dropdown açıldıktan sonra konumlandırmayı kontrol et
-            setTimeout(() => adjustDropdownType(dropdownItems), 100);
+            // Orijinal data-type'ı yükle ve sütun sayısını ayarla
+            dropdownItems.setAttribute('data-type', dropdownItems.getAttribute('data-original-type'));
+            adjustColumnsBasedOnScreen(dropdownItems);
         });
     });
 
-    // Tıklama dışı kapanma işlemi
-    document.addEventListener("click", function(event) {
+    // Dışarı tıklandığında dropdown'u kapat
+    document.addEventListener("click", function (event) {
         document.querySelectorAll(".dropdown-items").forEach((dropdownItems, index) => {
             const dropdownSvg = document.querySelectorAll("#dropdownSvg")[index];
             if (!dropdownItems.contains(event.target) && !document.querySelectorAll(".show-dropdown-items")[index].contains(event.target)) {
@@ -66,10 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Dropdown içerisindeki seçeneklere tıklanma işlemi
+    // Dropdown öğelerine tıklandığında seçimi uygula
     document.querySelectorAll(".dropdown-items").forEach((dropdownItems, index) => {
         dropdownItems.querySelectorAll("span").forEach(span => {
-            span.addEventListener("click", function() {
+            span.addEventListener("click", function () {
                 dropdownItems.querySelectorAll("span").forEach(s => s.style.display = "flex");
                 document.querySelectorAll(".show-dropdown-items")[index].querySelector("p").textContent = this.textContent;
                 this.style.display = "none";
@@ -79,63 +84,34 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    document.querySelectorAll(".dropdown-items").forEach(applyMinWidth);
+    // Pencere boyutu değiştiğinde açık dropdown'ları güncelle
+    window.addEventListener('resize', () => {
+        document.querySelectorAll('.dropdown-items.show-dropdown-list').forEach(dropdown => {
+            dropdown.setAttribute('data-type', dropdown.getAttribute('data-original-type'));
+            adjustColumnsBasedOnScreen(dropdown);
+        });
+    });
 });
 
+// Sütun sayısını ekran pozisyonuna göre ayarla
+function adjustColumnsBasedOnScreen(dropdownItems) {
+    const currentType = dropdownItems.getAttribute('data-type');
+    const types = ['longer-dropdown-list', 'long-dropdown-list', 'med-dropdown-list'];
+    let currentIndex = types.indexOf(currentType);
 
-// Dropdown'un ekran kenarına değip değmediğini kontrol edip data-type'ı değiştiren fonksiyon
-function adjustDropdownType(dropdown) {
-    const rect = dropdown.getBoundingClientRect();
-    const dropdownType = dropdown.getAttribute("data-type");
+    if (currentIndex === -1) return; // Daha fazla azaltma yapma
 
+    const rect = dropdownItems.getBoundingClientRect();
     if (rect.right > window.innerWidth) {
-        if (dropdownType === "longer-dropdown-list") {
-            dropdown.setAttribute("data-type", "long-dropdown-list");
-        } else if (dropdownType === "long-dropdown-list") {
-            dropdown.setAttribute("data-type", "med-dropdown-list");
-        } else if (dropdownType === "med-dropdown-list") {
-            dropdown.removeAttribute("data-type");
+        const nextIndex = currentIndex + 1;
+        if (nextIndex < types.length) {
+            dropdownItems.setAttribute('data-type', types[nextIndex]);
+        } else {
+            dropdownItems.removeAttribute('data-type');
         }
+        adjustColumnsBasedOnScreen(dropdownItems); // Recursive kontrol
     }
 }
-
-// Tüm dropdown'lar için adjustDropdownType fonksiyonunu çalıştırır
-function observeDropdowns() {
-    document.querySelectorAll(".dropdown .dropdown-items").forEach(dropdown => {
-        adjustDropdownType(dropdown);
-    });
-}
-
-// Dropdown'ları sıfırlayıp yeniden kontrol eden fonksiyon
-function resetDropdownsOnResize() {
-    document.querySelectorAll(".dropdown-items").forEach(dropdown => {
-        dropdown.classList.remove("show-dropdown-list"); // Açık dropdown'ları kapat
-        dropdown.removeAttribute("data-type");         // data-type'ı sıfırla
-    });
-    document.querySelectorAll("#dropdownSvg").forEach(svg => {
-        svg.classList.remove("active-dropdownSvg");      // SVG ikonlarını sıfırla
-    });
-    observeDropdowns(); // Tekrar kontrol et
-}
-
-// Sayfa tamamen yüklendikten sonra (tüm kaynaklar hazır) çalıştırıyoruz
-window.addEventListener("load", function() {
-    // Gerekirse setTimeout ile hafif gecikme eklenebilir (örneğin 100-200ms)
-    setTimeout(function() {
-        resetDropdownsOnResize();
-    }, 100);
-});
-
-// Ekran boyutu değiştiğinde dropdown'ları sıfırlıyoruz
-window.addEventListener("resize", function() {
-    resetDropdownsOnResize();
-});
-
-// Scroll sırasında da konumlandırmayı kontrol ediyoruz
-window.addEventListener("scroll", function() {
-    observeDropdowns();
-});
-
 
 
 /*    HTML CODE

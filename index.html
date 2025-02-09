@@ -122,6 +122,11 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        .color-container{
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
         .fs-main { font-size: var(--fs-main); }
         .fs-h1 { font-size: var(--fs-h1); }
         .fs-h2 { font-size: var(--fs-h2); }
@@ -150,7 +155,7 @@
  <main class="px-300 pb-250">
     <!-- -->
     <h6 style="margin-top:2em;">Gray Colors</h6>
-    <div class="flex-center width-100 gap-100">
+    <div class="flex-center color-container width-100 gap-100">
         <div class="color-box rgba-gray-much-darker-opacity">Much Darker Opacity</div>
         <div class="color-box rgba-gray-darker-opacity">Darker Opacity</div>
         <div class="color-box rgba-gray-much-darker">Much Darker</div>
@@ -507,9 +512,9 @@
     </div>
  </div>
 
+ <script src="Javascript Files/dropdown.js"></script>
  <script src="Javascript Files/inputFile.js"></script>
  <script src="Javascript Files/inputRange.js"></script>
- <script src="Javascript Files/dropdown.js"></script>
  <script src="Javascript Files/inputNumeric.js"></script>
  <script src="Javascript Files/fullScreenModal.js"></script>
  <script src="Javascript Files/alert.js"></script>
