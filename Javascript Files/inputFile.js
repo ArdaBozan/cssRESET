@@ -12,9 +12,9 @@ Array.prototype.forEach.call(inputs, function(input) {
         }
 
         if (fileName) {
-            document.getElementById('inputLabel').querySelector('p').innerHTML = "Dosya Seçildi!";
+            document.getElementById('inputLabel').querySelector('p').innerHTML = "File Selected!";
         } else {
-            document.getElementById('inputLabel').querySelector('p').innerHTML = "Dosya Seçin";
+            document.getElementById('inputLabel').querySelector('p').innerHTML = "Select File";
         }
     });
 });
