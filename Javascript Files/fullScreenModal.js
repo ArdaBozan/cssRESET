@@ -1,3 +1,9 @@
+/*!
+ * PureFlowCSS v1.0.0 (https://pureflowcss.com/)
+ * Copyright 2025 The PureFlowCSS Authors
+ * Licensed under MIT (https://github.com/ArdaBozan/PureFlowCSS/blob/main/LICENSE)
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
     const modalButton = document.querySelector(".active-modal");
     const fullScreenModal = document.querySelector(".fullScreenModal");
