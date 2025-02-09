@@ -88,13 +88,13 @@
     /* Chrome, Safari, Edge ve Opera */
     input[type=number]::-webkit-outer-spin-button,
     input[type=number]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
+      -webkit-appearance: none; /* Hides the spinner buttons */
+      margin: 0; /* Removes any default margin */
     }
 
     /* Firefox */
     input[type=number] {
-        -moz-appearance: textfield;
+      -moz-appearance: textfield; /* Makes the input look like a regular text field */
     }
 
 
@@ -445,7 +445,7 @@
       accent-color: var(--clr-accent);
     }
 
-    /* Input Block */
+    /* Input Block Styling */
     .input-block{
         display: grid;
         place-items: start;
@@ -493,6 +493,7 @@
         background-color: var(--clr-accent-300);
     }
 
+    /*  Controlling the width and height of elements */
     .fit-content{
       width: fit-content;
     }
@@ -759,6 +760,7 @@
         transition: var(--transition);
     }
 
+    /* Fast Blur Effects */
     .blur-5 { filter: blur(5px);  }
     .blur-10{ filter: blur(10px); }
     .blur-15{ filter: blur(15px); }
@@ -770,14 +772,17 @@
     .blur-45{ filter: blur(45px); }
     .blur-50{ filter: blur(50px); }
 
+    /* Rotate Elements */
     .rotate { scale: -1; }
 
+    /* Fit IMG */
     .img-set{
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
+    /* Dropdown Styling */
     .dropdown{
       position: relative;
       display: grid;
@@ -936,12 +941,10 @@
       white-space: nowrap;
       padding: 1em;
     }
+     /* Dropdown Stling Ends */
+     
 
-    .price-range-area p{
-      font-size: var(--fs-xs);
-      opacity: .9;
-    }
-
+    /* Range Input Stling */
     input[type=range] {
       -webkit-appearance: none;
       width: 100%;
@@ -987,6 +990,14 @@
       transition: left 0.1s ease-in-out;
     }
 
+    .price-range-area p{
+      font-size: var(--fs-xs);
+      opacity: .9;
+    }
+    /* Range Input Stling Ends */
+
+
+    /* File Input Stling */
     .inputfile {
       width: 0.1px;
       height: 0.1px;
@@ -1021,6 +1032,7 @@
     .inputfile + label * {
       pointer-events: none;
     }
+     /* File Input Stling Ends */
 
 
     /* Modal Styling starts here*/
@@ -1134,7 +1146,7 @@
     /* Button (or anything) with "showAlerts" class required. */
 
     /*-------------------------------------------------------- SCROLL ANIMATIONS --------------------------------------------------------*/
-    /* Text Animation */
+    /* Text Animation ---------------------------------------------------------------------------------- */
     .add-text-animation{
       transform: translateY(-5px) !important;
       opacity: 0 !important;
@@ -1155,7 +1167,7 @@
     }
 
 
-    /* Opacity Animation */
+    /* Opacity Animation ---------------------------------------------------------------------------------- */
     .add-opacity-animation{
       opacity: 0 !important;
       
@@ -1167,7 +1179,7 @@
     }
 
 
-    /* Slide To Left Animation */
+    /* Slide To Left Animation ---------------------------------------------------------------------------------- */
     .add-x-toLeft-animation{
       transform: translateX(-10px) !important;
       opacity: 0 !important;
@@ -1181,7 +1193,7 @@
     }
 
 
-    /* Slide To Right Animation */
+    /* Slide To Right Animation ---------------------------------------------------------------------------------- */
     .add-x-toRight-animation{
       transform: translateX(10px) !important;
       opacity: 0 !important;
@@ -1195,7 +1207,7 @@
     }
 
 
-    /* Scale Animation */
+    /* Scale Animation ---------------------------------------------------------------------------------- */
     .add-scale-animation{
       scale: 0 !important;
       opacity: 0 !important;
@@ -1209,7 +1221,7 @@
     }
 
     @media screen and (max-width: 1000px){
-        /* Optimized Scale Animation */
+        /* Optimized Scale Animation ---------------------------------------------------------------------------------- */
         .add-scale-animation{
           scale: .9 !important;
           opacity: .9 !important;

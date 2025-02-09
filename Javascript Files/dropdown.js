@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll("#dropdownSvg")[index].classList.toggle("active-dropdownSvg");
 
             applyMinWidth(dropdownItems);
+            setTimeout(() => adjustDropdownType(dropdownItems), 100);
         });
     });
 
@@ -72,7 +73,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelectorAll(".dropdown-items").forEach(applyMinWidth);
+
+    observeDropdowns(); // Sayfa yüklendiğinde dropdown türünü kontrol et
 });
+
+function adjustDropdownType(dropdown) {
+    const rect = dropdown.getBoundingClientRect();
+    const dropdownType = dropdown.getAttribute("data-type");
+
+    if (rect.right > window.innerWidth) {
+        if (dropdownType === "longer-dropdown-list") {
+            dropdown.setAttribute("data-type", "long-dropdown-list");
+        } else if (dropdownType === "long-dropdown-list") {
+            dropdown.setAttribute("data-type", "med-dropdown-list");
+        } else if (dropdownType === "med-dropdown-list") {
+            dropdown.removeAttribute("data-type");
+        }
+    }
+}
+
+function observeDropdowns() {
+    document.querySelectorAll(".dropdown .dropdown-items").forEach(dropdown => {
+        adjustDropdownType(dropdown);
+    });
+}
+
+// Sayfa yüklendiğinde, ekran yeniden boyutlandırıldığında ve kaydırıldığında çalıştır
+window.addEventListener("resize", observeDropdowns);
+window.addEventListener("scroll", observeDropdowns);
+document.addEventListener("DOMContentLoaded", observeDropdowns); // **Sayfa yüklendiğinde çalıştır**
+
 
 
 /*    HTML CODE
