@@ -76,18 +76,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     observeDropdowns(); // Sayfa yüklendiğinde dropdown türünü kontrol et
 
-    // **Sayfa yüklendiğinde ve her resize olayında dropdown'ları sıfırla**
+    // **Sayfa yüklendiğinde ve ekran boyutu değiştiğinde dropdown'ları sıfırla**
     function resetDropdownsOnResize() {
         document.querySelectorAll(".dropdown-items").forEach(dropdown => {
             dropdown.classList.remove("show-dropdown-list"); // Açık olan dropdown'ları kapat
+            dropdown.removeAttribute("data-type"); // Data tipini sıfırla
         });
+
         document.querySelectorAll("#dropdownSvg").forEach(svg => {
             svg.classList.remove("active-dropdownSvg"); // SVG ikonlarını sıfırla
         });
+
         observeDropdowns(); // Tekrar kontrol et
     }
 
     window.addEventListener("resize", resetDropdownsOnResize);
+    window.addEventListener("DOMContentLoaded", observeDropdowns);
 });
 
 function adjustDropdownType(dropdown) {
