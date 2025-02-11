@@ -1,39 +1,44 @@
 const slider = document.querySelector('.smooth-slider-container');
 
 let isDragging = false;
-let startX;
-let scrollLeft;
+let startX, scrollLeft;
 
-// Ortak fonksiyonlar
-const startDrag = (e) => {
-    isDragging = true;
-    slider.classList.add('dragging');
-    startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-};
+// Sürükleme başladığında
+slider.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  slider.classList.add('dragging');
+  // Sürükleme esnasında snap ve smooth davranışını kapatıyoruz:
+  slider.style.scrollSnapType = 'none';
+  slider.style.scrollBehavior = 'auto';
+  
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
 
-const endDrag = () => {
-    isDragging = false;
-    slider.classList.remove('dragging');
-};
+// Fare slider dışına çıktığında
+slider.addEventListener('mouseleave', () => {
+  isDragging = false;
+  slider.classList.remove('dragging');
+  // Bırakıldığında eski ayarları geri yüklüyoruz
+  slider.style.scrollSnapType = 'x mandatory';
+  // Eğer isterseniz burada scroll-behavior'i smooth yapabilirsiniz:
+  slider.style.scrollBehavior = 'smooth';
+});
 
-const duringDrag = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    
-    const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
-    const walk = (x - startX) * 3; // Hız çarpanı
-    slider.scrollLeft = scrollLeft - walk;
-};
+// Fare bırakıldığında
+slider.addEventListener('mouseup', () => {
+  isDragging = false;
+  slider.classList.remove('dragging');
+  // Bırakıldığında eski snap ve smooth davranışını geri yüklüyoruz
+  slider.style.scrollSnapType = 'x mandatory';
+  slider.style.scrollBehavior = 'smooth';
+});
 
-// Mouse olayları
-slider.addEventListener('mousedown', startDrag);
-slider.addEventListener('mouseup', endDrag);
-slider.addEventListener('mouseleave', endDrag);
-slider.addEventListener('mousemove', duringDrag);
-
-// Touch olayları
-slider.addEventListener('touchstart', startDrag, { passive: true });
-slider.addEventListener('touchend', endDrag, { passive: true });
-slider.addEventListener('touchcancel', endDrag, { passive: true });
-slider.addEventListener('touchmove', duringDrag, { passive: false });
+// Sürükleme (mousemove) sırasında
+slider.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  e.preventDefault(); // Tarayıcının varsayılan davranışını engelle
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 2; // Kaydırma hassasiyeti; dilediğiniz gibi ayarlayabilirsiniz
+  slider.scrollLeft = scrollLeft - walk;
+});

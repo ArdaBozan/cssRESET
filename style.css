@@ -1457,8 +1457,6 @@
       display: flex; /* Sort items side by side */
       cursor: grab;
       user-select: none;
-      scroll-behavior: smooth;
-      scroll-snap-stop: always;
 
       /* Make you own stling here */
       width: 100%; /* Container width */
@@ -1466,7 +1464,6 @@
     }
 
     .smooth-slider-container.dragging {
-      scroll-behavior: auto !important;
       cursor: grabbing;
   }
 
