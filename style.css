@@ -1445,3 +1445,52 @@
       text-overflow: ellipsis;
     }
     /* Card Slider Styling Ends */
+
+
+
+
+    /* Smooth Card Slider Styling */
+    /* Container Style */
+    .smooth-slider-container {
+      scroll-snap-type: x mandatory; /* Horizontal shift and forced docking */
+      overflow-x: auto; /* Enable horizontal sliding */
+      display: flex; /* Sort items side by side */
+      cursor: grab;
+      user-select: none;
+
+      /* Make you own stling here */
+      width: 100%; /* Container width */
+      height: 300px; /* Container height */
+    }
+
+    @supports(scrollbar-color: red blue){
+      /* Use this if you want to make the scrollbar invisible
+
+      Or you can set any color you want for the scrollbar */ 
+      .smooth-slider-container{
+          scrollbar-color: transparent transparent;
+          scrollbar-width: thin;
+      }
+    }
+
+    /* Item */
+    .smooth-slider-item {
+      scroll-snap-align: start; /* Clamp each item to the origin */
+      flex: 0 0 100%; /* Make each element span the full width of the container */
+      width: 100%; /* Item width */
+      height: 100%; /* Item height */
+      
+      /* Make you own stling here */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .smooth-slider-item:nth-child(1) { background-color: #ff6f61; }
+    .smooth-slider-item:nth-child(2) { background-color: #6b5b95; }
+    .smooth-slider-item:nth-child(3) { background-color: #88b04b; }
+    .smooth-slider-item:nth-child(4) { background-color: #ffa500; }
+    .smooth-slider-item:nth-child(5) { background-color: #92a8d1; }
+    /* Smooth Card Slider Styling Ends */
