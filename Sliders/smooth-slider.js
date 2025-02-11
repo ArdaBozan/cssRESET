@@ -1,46 +1,49 @@
-const smoothSlider = document.querySelector('.smooth-slider-container');
+const slider = document.querySelector('.smooth-slider-container');
 
 let isDragging = false;
-let startX, scrollLeft;
+let startX;
+let scrollLeft;
 
-smoothSlider.addEventListener('mousedown', (e) => {
+slider.addEventListener('mousedown', (e) => {
   isDragging = true;
-  smoothSlider.classList.add('grabbing');
-  startX = e.pageX - smoothSlider.offsetLeft;
-  scrollLeft = smoothSlider.scrollLeft;
+  slider.classList.add('active');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
 });
 
-smoothSlider.addEventListener('mouseleave', () => {
+slider.addEventListener('mouseleave', () => {
   isDragging = false;
-  smoothSlider.classList.remove('grabbing');
+  slider.classList.remove('active');
 });
 
-smoothSlider.addEventListener('mouseup', () => {
+slider.addEventListener('mouseup', () => {
   isDragging = false;
-  smoothSlider.classList.remove('grabbing');
+  slider.classList.remove('active');
 });
 
-smoothSlider.addEventListener('mousemove', (e) => {
+slider.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
   e.preventDefault();
-  const x = e.pageX - smoothSlider.offsetLeft;
+  const x = e.pageX - slider.offsetLeft;
   const walk = (x - startX) * 2;
-  smoothSlider.scrollLeft = scrollLeft - walk;
+  slider.scrollLeft = scrollLeft - walk;
 });
 
-smoothSlider.addEventListener('touchstart', (e) => {
+// Touch olayları
+slider.addEventListener('touchstart', (e) => {
   isDragging = true;
-  startX = e.touches[0].pageX - smoothSlider.offsetLeft;
-  scrollLeft = smoothSlider.scrollLeft;
-});
+  startX = e.touches[0].pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+}, { passive: true });
 
-smoothSlider.addEventListener('touchend', () => {
+slider.addEventListener('touchend', () => {
   isDragging = false;
-});
+}, { passive: true });
 
-smoothSlider.addEventListener('touchmove', (e) => {
+slider.addEventListener('touchmove', (e) => {
   if (!isDragging) return;
-  const x = e.touches[0].pageX - smoothSlider.offsetLeft;
+  e.preventDefault();
+  const x = e.touches[0].pageX - slider.offsetLeft;
   const walk = (x - startX) * 2;
-  smoothSlider.scrollLeft = scrollLeft - walk;
-});
+  slider.scrollLeft = scrollLeft - walk;
+}, { passive: false });

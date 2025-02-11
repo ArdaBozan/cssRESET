@@ -1457,10 +1457,15 @@
       display: flex; /* Sort items side by side */
       cursor: grab;
       user-select: none;
+      scroll-behavior: smooth;
 
       /* Make you own stling here */
       width: 100%; /* Container width */
       height: 300px; /* Container height */
+    }
+
+    .smooth-slider-container.active {
+      cursor: grabbing;
     }
 
     @supports(scrollbar-color: red blue){
