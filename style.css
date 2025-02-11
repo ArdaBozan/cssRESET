@@ -804,7 +804,7 @@
       align-items: center;
       background-color: var(--dropdown-bg);
       padding: var(--dropdown-padding);
-      gap: 2.5em;
+      gap: .75em;
       border-radius: var(--input-border-radius);
       overflow: hidden;
       border: var(--input-border);
