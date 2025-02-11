@@ -4,46 +4,36 @@ let isDragging = false;
 let startX;
 let scrollLeft;
 
-slider.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  slider.classList.add('active');
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
+// Ortak fonksiyonlar
+const startDrag = (e) => {
+    isDragging = true;
+    slider.classList.add('dragging');
+    startX = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+};
 
-slider.addEventListener('mouseleave', () => {
-  isDragging = false;
-  slider.classList.remove('active');
-});
+const endDrag = () => {
+    isDragging = false;
+    slider.classList.remove('dragging');
+};
 
-slider.addEventListener('mouseup', () => {
-  isDragging = false;
-  slider.classList.remove('active');
-});
+const duringDrag = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    const x = (e.pageX || e.touches[0].pageX) - slider.offsetLeft;
+    const walk = (x - startX) * 3; // Hız çarpanı
+    slider.scrollLeft = scrollLeft - walk;
+};
 
-slider.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 2;
-  slider.scrollLeft = scrollLeft - walk;
-});
+// Mouse olayları
+slider.addEventListener('mousedown', startDrag);
+slider.addEventListener('mouseup', endDrag);
+slider.addEventListener('mouseleave', endDrag);
+slider.addEventListener('mousemove', duringDrag);
 
 // Touch olayları
-slider.addEventListener('touchstart', (e) => {
-  isDragging = true;
-  startX = e.touches[0].pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-}, { passive: true });
-
-slider.addEventListener('touchend', () => {
-  isDragging = false;
-}, { passive: true });
-
-slider.addEventListener('touchmove', (e) => {
-  if (!isDragging) return;
-  e.preventDefault();
-  const x = e.touches[0].pageX - slider.offsetLeft;
-  const walk = (x - startX) * 2;
-  slider.scrollLeft = scrollLeft - walk;
-}, { passive: false });
+slider.addEventListener('touchstart', startDrag, { passive: true });
+slider.addEventListener('touchend', endDrag, { passive: true });
+slider.addEventListener('touchcancel', endDrag, { passive: true });
+slider.addEventListener('touchmove', duringDrag, { passive: false });

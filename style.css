@@ -1458,15 +1458,17 @@
       cursor: grab;
       user-select: none;
       scroll-behavior: smooth;
+      scroll-snap-stop: always;
 
       /* Make you own stling here */
       width: 100%; /* Container width */
       height: 300px; /* Container height */
     }
 
-    .smooth-slider-container.active {
+    .smooth-slider-container.dragging {
+      scroll-behavior: auto !important;
       cursor: grabbing;
-    }
+  }
 
     @supports(scrollbar-color: red blue){
       /* Use this if you want to make the scrollbar invisible
