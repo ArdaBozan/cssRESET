@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".pureflowcss-dropdown-items").forEach(dropdown => {
         dropdown.setAttribute('data-original-type', dropdown.getAttribute('data-type'));
 
-        // Yeni eklenen kısım: Sayfa yüklendiğinde direkt olarak kontrol et
+        // Sayfa yüklendiğinde direkt olarak kontrol et
         const tempCheck = () => {
             // Dropdown'ın gerçek pozisyonunu ölçebilmek için geçici olarak görünür yap
             const originalStyles = {
@@ -14,13 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 pointerEvents: dropdown.style.pointerEvents
             };
             
-            dropdown.style.cssText = `
-                visibility: visible !important;
-                opacity: 1 !important;
-                position: absolute !important;
-                max-height: none !important;
-                pointer-events: none !important;
-            `;
+            // Geçici stil ataması (cssText string olarak verilmelidir)
+            dropdown.style.cssText = "visibility: visible !important; opacity: 1 !important; position: absolute !important; max-height: none !important; pointer-events: none !important;";
             
             // Reflow tetikle
             void dropdown.offsetHeight;
@@ -96,7 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (event) {
         document.querySelectorAll(".pureflowcss-dropdown-items").forEach((dropdownItems, index) => {
             const dropdownSvg = document.querySelectorAll("#dropdownSvg")[index];
-            if (!dropdownItems.contains(event.target) && !document.querySelectorAll(".show-dropdown-items")[index].contains(event.target)) {
+            if (
+                !dropdownItems.contains(event.target) &&
+                !document.querySelectorAll(".show-dropdown-items")[index].contains(event.target)
+            ) {
                 dropdownItems.classList.remove("show-dropdown-list");
                 dropdownSvg.classList.remove("active-dropdownSvg");
             }
@@ -107,8 +105,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".pureflowcss-dropdown-items").forEach((dropdownItems, index) => {
         dropdownItems.querySelectorAll("span").forEach(span => {
             span.addEventListener("click", function () {
+                // Tüm span'ları tekrar görünür yap
                 dropdownItems.querySelectorAll("span").forEach(s => s.style.display = "flex");
+                // Seçilen değeri göster
                 document.querySelectorAll(".show-dropdown-items")[index].querySelector("p").textContent = this.textContent;
+                // Seçilen span'ı gizle
                 this.style.display = "none";
                 dropdownItems.classList.remove("show-dropdown-list");
                 document.querySelectorAll("#dropdownSvg")[index].classList.remove("active-dropdownSvg");
@@ -116,13 +117,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Pencere boyutu değiştiğinde açık dropdown'ları güncelle
-    window.addEventListener('resize', () => {
-        document.querySelectorAll('.dropdown-items.show-dropdown-list').forEach(dropdown => {
+    // Pencere boyutu veya cihaz yönü değiştiğinde açık dropdown'ları güncelle
+    function updateDropdowns() {
+        document.querySelectorAll('.pureflowcss-dropdown-items.show-dropdown-list').forEach(dropdown => {
             dropdown.setAttribute('data-type', dropdown.getAttribute('data-original-type'));
             adjustColumnsBasedOnScreen(dropdown);
         });
-    });
+    }
+    window.addEventListener('resize', updateDropdowns);
+    window.addEventListener('orientationchange', updateDropdowns);
 });
 
 // Sütun sayısını ekran pozisyonuna göre ayarla
@@ -144,27 +147,3 @@ function adjustColumnsBasedOnScreen(dropdownItems) {
         adjustColumnsBasedOnScreen(dropdownItems); // Recursive kontrol
     }
 }
-
-
-/*    HTML CODE
-
-<div class="pureflowcss-dropdown" title="" data-index="1">
-            <label name="" id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
-                <p name="">1 Column Dropdown</p>
-                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
-                </svg>
-            </label>
-            <div class="dropdown-items" data-index="1"> <!-- Increase column number by adding "data-type" -->
-                                                         <!-- med-dropdown-list = 2 column
-                                                              long-dropdown-list = 3 column
-                                                              longer-dropdown-list = 4 column 
-                                                              you can add more columns by using css (line 830) -->
-                <span>Example 1</span>
-                <span>Example 2</span>
-                <span>Example 3</span>
-                <span>Example 4</span>
-            </div>
-        </div>
-
-*/
