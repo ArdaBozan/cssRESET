@@ -1,7 +1,7 @@
 // Sayfadaki tüm slider container öğelerini seçiyoruz
-const sliders = document.querySelectorAll('.smooth-slider-container');
+const pureflowcss_Sliders = document.querySelectorAll('.pureflowcss-smooth-slider-container');
 
-sliders.forEach((slider) => {
+pureflowcss_Sliders.forEach((slider) => {
   let isDragging = false;
   let startX, scrollLeft;
 

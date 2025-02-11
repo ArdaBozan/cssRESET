@@ -772,7 +772,7 @@ a.transparent-a{
   object-fit: cover;
 }
 
-.dropdown{
+.pureflowcss-dropdown{
   position: relative;
   display: grid;
   min-width: fit-content;
