@@ -364,7 +364,7 @@
     }
 
 
-    /* ---------------- SECONDARY BUTTONS --------------- */
+    /* ---------------- SECONDARY BUTTON --------------- */
     button:is(.secondaryBtn),
     button:is(.secondaryBtn)[type="submit"],
     button:is(.secondaryBtn)[type="button"],
@@ -383,6 +383,128 @@
       background-color: var(--btn-secondary-hover);
     }
 
+    /* ---------------- GRADIENT BUTTONS --------------- */
+    /* ---------------- ONLY BACKGROUND --------------- */
+    button:is(.btn_bgG),
+    button:is(.btn_bgG)[type="submit"],
+    button:is(.btn_bgG)[type="button"],
+    input:is(.btn_bgG)[type="button"],
+    input:is(.btn_bgG)[type="submit"]{
+      padding: 20px 60px;
+      border: none;
+      outline: none;
+      position: relative;
+      z-index: 1;
+      border-radius: 8px;
+      background: linear-gradient(to right, #00ffa3, #dc1fff);
+      cursor: pointer;
+    }
+
+    button:is(.btn_bgG)::before,
+    button:is(.btn_bgG)[type="submit"]::before,
+    button:is(.btn_bgG)[type="button"]::before,
+    input:is(.btn_bgG)[type="button"]::before,
+    input:is(.btn_bgG)[type="submit"]::before{
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 5px;
+      background-color: white;
+      z-index: -1;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    button:is(.btn_bgG)::after,
+    button:is(.btn_bgG)[type="submit"]::after,
+    button:is(.btn_bgG)[type="button"]::after,
+    input:is(.btn_bgG)[type="button"]::after,
+    input:is(.btn_bgG)[type="submit"]::after{
+      content: attr(data);
+      font-size: 21px;
+      background: linear-gradient(to left, #00ffa3, #dc1fff);
+      -webkit-background-clip: text;
+      color: transparent;
+      transition: var(--transition);
+    }
+
+    button:is(.btn_bgG):is(:hover,:focus-visible):before,
+    button:is(.btn_bgG)[type="submit"]:is(:hover,:focus-visible):before,
+    button:is(.btn_bgG)[type="button"]:is(:hover,:focus-visible):before,
+    input:is(.btn_bgG)[type="button"]:is(:hover,:focus-visible):before,
+    input:is(.btn_bgG)[type="submit"]:is(:hover,:focus-visible):before{
+      opacity: 1;
+    }
+
+    button:is(.btn_bgG):is(:hover,:focus-visible):after,
+    button:is(.btn_bgG)[type="submit"]:is(:hover,:focus-visible):after,
+    button:is(.btn_bgG)[type="button"]:is(:hover,:focus-visible):after,
+    input:is(.btn_bgG)[type="button"]:is(:hover,:focus-visible):after,
+    input:is(.btn_bgG)[type="submit"]:is(:hover,:focus-visible):after{
+      color: #fff;
+    }
+
+    /* ---------------- ONLY BORDER --------------- */
+    button:is(.btnb_bG),
+    button:is(.btnb_bG)[type="submit"],
+    button:is(.btnb_bG)[type="button"],
+    input:is(.btnb_bG)[type="button"],
+    input:is(.btnb_bG)[type="submit"]{
+      padding: 20px 60px;
+      border: none;
+      outline: none;
+      position: relative;
+      z-index: 1;
+      border-radius: 8px;
+      background: linear-gradient(to right, #00ffa3, #dc1fff);
+      cursor: pointer;
+    }
+
+    button:is(.btnb_bG)::before,
+    button:is(.btnb_bG)[type="submit"]::before,
+    button:is(.btnb_bG)[type="button"]::before,
+    input:is(.btnb_bG)[type="button"]::before,
+    input:is(.btnb_bG)[type="submit"]::before{
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 5px;
+      background-color: white;
+      z-index: -1;
+      transition: var(--transition);
+    }
+
+    button:is(.btnb_bG)::after,
+    button:is(.btnb_bG)[type="submit"]::after,
+    button:is(.btnb_bG)[type="button"]::after,
+    input:is(.btnb_bG)[type="button"]::after,
+    input:is(.btnb_bG)[type="submit"]::after{
+      content: attr(data);
+      font-size: 21px;
+      background: linear-gradient(to left, #00ffa3, #dc1fff);
+      -webkit-background-clip: text;
+      color: transparent;
+      transition: var(--transition);
+    }
+
+    button:is(.btnb_bG):is(:hover,:focus-visible):before,
+    button:is(.btnb_bG)[type="submit"]:is(:hover,:focus-visible):before,
+    button:is(.btnb_bG)[type="button"]:is(:hover,:focus-visible):before,
+    input:is(.btnb_bG)[type="button"]:is(:hover,:focus-visible):before,
+    input:is(.btnb_bG)[type="submit"]:is(:hover,:focus-visible):before{
+      opacity: 0;
+    }
+
+    button:is(.btnb_bG):is(:hover,:focus-visible):after,
+    button:is(.btnb_bG)[type="submit"]:is(:hover,:focus-visible):after,
+    button:is(.btnb_bG)[type="button"]:is(:hover,:focus-visible):after,
+    input:is(.btnb_bG)[type="button"]:is(:hover,:focus-visible):after,
+    input:is(.btnb_bG)[type="submit"]:is(:hover,:focus-visible):after{
+      color: #fff;
+    }
+
+
+    /* ---------------- OTHER BUTTONS --------------- */
     button:is(.btnGray, .btnGrayBorderless),
     button:is(.btnGray, .btnGrayBorderless)[type="submit"],
     button:is(.btnGray, .btnGrayBorderless)[type="button"],
