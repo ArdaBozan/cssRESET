@@ -122,6 +122,9 @@
 
     /* Root Elements */
     :root{
+
+        --max-page-width: 1920px; /* Maximum Page Width */
+
         --ff-main: ;
 
         /* Font Weights */
@@ -237,6 +240,14 @@
         --btn-border-radius: 10px;
         --btn-border-radius-smooth: 12px;
         --btn-border-radius-sharp: 5px;
+
+        --btn-border-radius-xl: 24px;
+        --btn-border-radius-lg: 20px;
+        --btn-border-radius-md: 12px;
+        --btn-border-radius-sm: 10px;
+        --btn-border-radius-xs: 5px;
+        --btn-border-radius-pill: 100vw;
+        --btn-border-radius-none: 0;
         
         --btn-padding: .45em 1em;
 
@@ -335,7 +346,7 @@
         font-weight: var(--fw-normal);
         background-color: var(--btn-bg);
         font-size: var(--fs-btn);
-        border-radius: var(--btn-border-radius);
+        border-radius: var(--btn-border-radius-sm);
         color: var(--btn-txt);
         border: var(--btn-border);
     }
@@ -364,7 +375,7 @@
     input:not(.transparent-btn, .hamburger-btn)[type="button"],
     input:not(.transparent-btn, .hamburger-btn)[type="submit"]{
       padding-block: .3em;
-      border-radius: var(--btn-border-radius-sharp);
+      border-radius: var(--btn-border-radius-xs);
     }
     }
 
@@ -400,7 +411,7 @@
       outline: none;
       position: relative;
       z-index: 1;
-      border-radius: var(--btn-border-radius);
+      border-radius: var(--btn-border-radius-sm);
       background: linear-gradient(to right, #00ffa3, #dc1fff);
     }
 
@@ -412,7 +423,7 @@
       content: "";
       position: absolute;
       inset: var(--gradient-btn-border-size);
-      border-radius: calc(var(--btn-border-radius) - var(--gradient-btn-border-size));
+      border-radius: calc(var(--btn-border-radius-sm) - var(--gradient-btn-border-size));
       background-color: white;
       z-index: -1;
       transition: var(--transition);
@@ -1373,6 +1384,8 @@
       font-weight: var(--fw-normal);
       color: var(--clr-txt);
       background-color: var(--clr-bg);
+      margin-inline: auto;
+      max-width: var(--max-page-width);
     }
 
     body.noScrollBody{
