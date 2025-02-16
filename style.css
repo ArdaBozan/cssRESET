@@ -125,11 +125,15 @@
         --ff-main: ;
 
         /* Font Weights */
-        --fw-bold: 800;
+        --fw-black: 900;
+        --fw-extra-bold: 800;
+        --fw-bold: 700;
         --fw-semi-bold: 600;
-        --fw-normal-bolder: 500;
-        --fw-normal: 400;
+        --fw-medium: 500;
+        --fw-regular: 400;
         --fw-light: 300;
+        --fw-extra-light: 200;
+        --fw-thin: 100;
 
         /* Font Sizes */
         --fs-main: clamp(1.1em, 2vw, 1.1em);
@@ -618,12 +622,29 @@
         cursor: url('cursor-pointer.svg'), pointer;
     }
 
-    /* Font Weights */
+   /* Font Weights */
+    .fw-black { font-weight: var(--fw-black); }
+    .fw-extra-bold { font-weight: var(--fw-extra-bold); }
     .fw-bold { font-weight: var(--fw-bold); }
     .fw-semi-bold { font-weight: var(--fw-semi-bold); }
-    .fw-normal-bolder { font-weight: var(--fw-normal-bolder); }
-    .fw-normal { font-weight: var(--fw-normal); }
+    .fw-medium { font-weight: var(--fw-medium); }
+    .fw-regular { font-weight: var(--fw-regular); }
     .fw-light { font-weight: var(--fw-light); }
+    .fw-extra-light { font-weight: var(--fw-extra-light); }
+    .fw-thin { font-weight: var(--fw-thin); }
+    /* Your font may not support some values */
+
+    /* Font Weights (Simplified)*/
+    .fw-900 { font-weight: var(--fw-black); }
+    .fw-800 { font-weight: var(--fw-extra-bold); }
+    .fw-700 { font-weight: var(--fw-bold); }
+    .fw-600 { font-weight: var(--fw-semi-bold); }
+    .fw-500 { font-weight: var(--fw-medium); }
+    .fw-400 { font-weight: var(--fw-regular); }
+    .fw-300 { font-weight: var(--fw-light); }
+    .fw-200 { font-weight: var(--fw-extra-light); }
+    .fw-100 { font-weight: var(--fw-thin); }
+    /* Your font may not support some values */
 
     /* Gaps */
     .g-30  { gap: .3em;  }
