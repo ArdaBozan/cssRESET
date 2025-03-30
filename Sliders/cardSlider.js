@@ -1,42 +1,68 @@
-// Tüm .pureflowcss-card-slider-container-parent öğelerini seç
 const containers = document.querySelectorAll('.pureflowcss-card-slider-container-parent');
 
-// Her bir container için olayları tanımla
 containers.forEach((container) => {
     let isDragging = false;
     let startX;
     let scrollLeft;
+    let moved = false; // Kullanıcının sürükleme yapıp yapmadığını kontrol eden değişken
 
-    // Mousedown olayı
     container.addEventListener('mousedown', (e) => {
         isDragging = true;
+        moved = false; // Başlangıçta hareket edilmediğini varsayıyoruz
         container.classList.add('dragging');
         startX = e.pageX - container.offsetLeft;
         scrollLeft = container.scrollLeft;
     });
 
-    // Mouseleave olayı
     container.addEventListener('mouseleave', () => {
         isDragging = false;
         container.classList.remove('dragging');
     });
 
-    // Mouseup olayı
     container.addEventListener('mouseup', () => {
         isDragging = false;
         container.classList.remove('dragging');
     });
 
-    // Mousemove olayı
     container.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         e.preventDefault();
         const x = e.pageX - container.offsetLeft;
         const walk = (x - startX) * 2;
+        if (Math.abs(walk) > 5) moved = true; // Eğer yeterli mesafe hareket edildiyse, tıklama engellenecek
         container.scrollLeft = scrollLeft - walk;
     });
 
-    // Sağ/sol ok butonları için ID ile değil, container içinde seçim yap
+    // .pureflowcss-card-slider-card içindeki img etiketlerine müdahale et
+    container.querySelectorAll('.pureflowcss-card-slider-card').forEach((img) => {
+        // İlk başta inline onclick özelliğinden yönlendirme URL'sini çekiyoruz
+        let targetUrl = "";
+        const onclickAttr = img.getAttribute('onclick');
+        if (onclickAttr) {
+            // window.location.href = '...'; yapısını düzenli ifade ile ayrıştırıyoruz
+            const match = onclickAttr.match(/window\.location\.href\s*=\s*['"]([^'"]+)['"]/);
+            if (match && match[1]) {
+                targetUrl = match[1];
+            }
+        }
+        
+        // Orijinal onclick özelliğini kaldırıyoruz
+        img.removeAttribute('onclick');
+
+        // Yeni click olayını ekliyoruz
+        img.addEventListener('click', (e) => {
+            if (moved) {
+                // Eğer sürükleme yapıldıysa, tıklamayı iptal ediyoruz
+                e.preventDefault();
+            } else {
+                // Eğer URL varsa yönlendirme yapıyoruz
+                if (targetUrl) {
+                    window.location.href = targetUrl;
+                }
+            }
+        });
+    });
+
     const moveLeft = container.parentElement.querySelector('#moveLeft');
     const moveRight = container.parentElement.querySelector('#moveRight');
 
