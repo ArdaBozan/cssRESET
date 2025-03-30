@@ -216,7 +216,8 @@
         --clr-accent-500: ;
         --clr-accent-600: ;
         --clr-accent-700: ;
-        --clr-accent-750: ;
+        --clr-accent-800: ;
+        --clr-accent-900: ;
 
         --clr-accent-lighter: ;
         --clr-accent-darker: ;
@@ -733,6 +734,51 @@
     .text-center{
         text-align: center;
     }
+
+    /* Fast Layouts */
+
+/* Flexbox Utilities */
+.f { display: flex; align-items: center; }
+
+.fw { flex-wrap: wrap; }
+.fnw { flex-wrap: nowrap; }
+
+.fsb { display: flex; align-items: center; justify-content: space-between !important; }
+.fsa { display: flex; align-items: center; justify-content: space-around; }
+.fse { display: flex; align-items: center; justify-content: space-evenly; }
+
+.fst { display: flex; align-items: flex-start; }
+.fend { display: flex; align-items: flex-end; }
+
+.fc { display: flex; align-items: center; justify-content: center; }
+.fcx { display: flex; align-items: start; justify-content: center; }
+.fcy { display: flex; justify-content: start; align-items: center; }
+
+.fc-col { display: flex; flex-direction: column; }
+.fc-col-r { display: flex; flex-direction: column-reverse; }
+.fc-row-r { display: flex; flex-direction: row-reverse; }
+
+.as-start { align-self: start; }
+.as-center { align-self: center; }
+.as-end { align-self: end; }
+
+.js-start { justify-self: start; }
+.js-center { justify-self: center; }
+.js-end { justify-self: end; }
+
+.g-sm { gap: 8px; }
+.g-md { gap: 16px; }
+.g-lg { gap: 32px; }
+
+/* Grid Utilities */
+.gd { display: grid; }
+.gd-center { display: grid; place-items: center; }
+.gd-2c { grid-column: span 2; }
+.gd-3c { grid-column: span 3; }
+.gd-auto { grid-auto-flow: column; }
+
+
+.cs { margin-inline: auto; justify-self: center; }
 
     /* Custom Cursor (Pointer) */
     .cursor{
@@ -1590,52 +1636,52 @@
 
 
 
-    /* Smooth Card Slider Styling */
-    /* Container Style */
-    .pureflowcss-smooth-slider-container {
-      scroll-snap-type: x mandatory; /* Horizontal shift and forced docking */
-      overflow-x: auto; /* Enable horizontal sliding */
-      display: flex; /* Sort items side by side */
-      cursor: grab;
-      user-select: none;
+      /* Smooth Card Slider Styling */
+      /* Container Style */
+      .pureflowcss-smooth-slider-container {
+        scroll-snap-type: x mandatory; /* Horizontal shift and forced docking */
+        overflow-x: auto; /* Enable horizontal sliding */
+        display: flex; /* Sort items side by side */
+        cursor: grab;
+        user-select: none;
 
-      /* Make you own stling here */
-      width: 100%; /* Container width */
-      height: 300px; /* Container height */
-    }
-
-    .pureflowcss-smooth-slider-container.dragging {
-      cursor: grabbing;
-  }
-
-    @supports(scrollbar-color: red blue){
-      /* Use this if you want to make the scrollbar invisible
-
-      Or you can set any color you want for the scrollbar */ 
-      .pureflowcss-smooth-slider-container{
-          scrollbar-color: transparent transparent;
-          scrollbar-width: thin;
+        /* Make you own stling here */
+        width: 100%; /* Container width */
+        height: 300px; /* Container height */
       }
+
+      .pureflowcss-smooth-slider-container.dragging {
+        cursor: grabbing;
     }
 
-    /* Item */
-    .pureflowcss-smooth-slider-item {
-      scroll-snap-align: start; /* Clamp each item to the origin */
-      flex: 0 0 100%; /* Make each element span the full width of the container */
-      width: 100%; /* Item width */
-      height: 100%; /* Item height */
-      
-      /* Make you own stling here */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: white;
-    }
+      @supports(scrollbar-color: red blue){
+        /* Use this if you want to make the scrollbar invisible
 
-    .pureflowcss-smooth-slider-item:nth-child(1) { background-color: #ff6f61; }
-    .pureflowcss-smooth-slider-item:nth-child(2) { background-color: #6b5b95; }
-    .pureflowcss-smooth-slider-item:nth-child(3) { background-color: #88b04b; }
-    .pureflowcss-smooth-slider-item:nth-child(4) { background-color: #ffa500; }
-    .pureflowcss-smooth-slider-item:nth-child(5) { background-color: #92a8d1; }
-    /* Smooth Card Slider Styling Ends */
+        Or you can set any color you want for the scrollbar */ 
+        .pureflowcss-smooth-slider-container{
+            scrollbar-color: transparent transparent;
+            scrollbar-width: thin;
+        }
+      }
+
+      /* Item */
+      .pureflowcss-smooth-slider-item {
+        scroll-snap-align: start; /* Clamp each item to the origin */
+        flex: 0 0 100%; /* Make each element span the full width of the container */
+        width: 100%; /* Item width */
+        height: 100%; /* Item height */
+        
+        /* Make you own stling here */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+      }
+
+      .pureflowcss-smooth-slider-item:nth-child(1) { background-color: #ff6f61; }
+      .pureflowcss-smooth-slider-item:nth-child(2) { background-color: #6b5b95; }
+      .pureflowcss-smooth-slider-item:nth-child(3) { background-color: #88b04b; }
+      .pureflowcss-smooth-slider-item:nth-child(4) { background-color: #ffa500; }
+      .pureflowcss-smooth-slider-item:nth-child(5) { background-color: #92a8d1; }
+      /* Smooth Card Slider Styling Ends */
