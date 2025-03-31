@@ -326,6 +326,17 @@
         --text-animation-longer: 1s;
         --xl-animation: .5s;
         --xr-animation: .5s;
+
+        
+        --title-max-width: 300px;
+        --title-bg: var(--clr-neutral-light);
+        --title-border: 1.5px solid #dfdfdf;
+        --title-border-radius: 5px;
+        --title-shadow: var(--clr-rgba-gray-softer) 0 0 5px 1px;
+        --title-padding: .3em .8em;
+        --title-fs: 14px;
+        --title-fw: var(--fw-regular);
+        --title-clr: #9b9b9b;
     }
 
     /* Header Texts */
@@ -1430,6 +1441,47 @@
           opacity: 1 !important;
         
         }  
+    }
+    
+    [data-title] {
+      position: relative !important;
+    }
+    
+    [data-title]:after {
+      content: attr(data-title) !important;
+      background-color: var(--title-bg) !important;
+      padding: var(--title-padding) !important;
+      color: var(--title-clr) !important;
+      font-size: var(--title-fs) !important;
+      font-weight: var(--title-fw) !important;
+      box-shadow: var(--title-shadow) !important;
+      border: var(--title-border) !important;
+      border-radius: var(--title-border-radius) !important;
+      position: fixed !important;
+      top: calc(var(--mouse-y, 0) + 15px) !important;
+      left: var(--mouse-x, 0) !important;
+      z-index: 99999 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      max-width: var(--title-max-width) !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      transition: var(--transition) ease !important;
+      display: block !important;
+    }
+    
+    [data-title][data-show-tooltip]:after {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    
+    /* Mobil cihazlarda tamamen gizle */
+    @media (hover: none) {
+      [data-title]:after {
+        display: none !important;
+      }
     }
 
 
