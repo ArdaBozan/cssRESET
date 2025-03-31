@@ -169,8 +169,8 @@
 
 
         /* Primary Colors */
-        --clr-light: hsl(0, 0%, 100%);
-        --clr-dark: hsl(0, 0%, 0%);
+        --clr-neutral-light: hsl(0, 0%, 100%);
+        --clr-neutral-dark: hsl(0, 0%, 0%);
         
         --clr-warning: hsl(0, 100%, 50%);
 
@@ -206,21 +206,21 @@
         --alert-padding: ;          /* Set padding */
 
 
-        /* Accent Colors */
-        --clr-accent: ;
-        
-        --clr-accent-100: ;
-        --clr-accent-200: ;
-        --clr-accent-300: ;
-        --clr-accent-400: ;
-        --clr-accent-500: ;
-        --clr-accent-600: ;
-        --clr-accent-700: ;
-        --clr-accent-800: ;
-        --clr-accent-900: ;
+        /* primary Colors */
+        --clr-primary: ;
+      
+        --clr-primary-100: ;
+        --clr-primary-200: ;
+        --clr-primary-300: ;
+        --clr-primary-400: ;
+        --clr-primary-500: ;
+        --clr-primary-600: ;
+        --clr-primary-700: ;
+        --clr-primary-800: ;
+        --clr-primary-900: ;
 
-        --clr-accent-lighter: ;
-        --clr-accent-darker: ;
+        --clr-primary-lighter: ;
+        --clr-primary-darker: ;
 
         
         /* Gradient Colors */
@@ -323,7 +323,7 @@
     }
 
     /* Header Texts */
-    h1{ font-size: var(--fs-h1); font-weight: var(--fw-bold);}
+    h1{ font-size: var(--fs-h1); font-weight: var(--fw-semi-bold);}
     h2{ font-size: var(--fs-h2); font-weight: var(--fw-semi-bold);}
     h3{ font-size: var(--fs-h3); font-weight: var(--fw-semi-bold);}
     h4{ font-size: var(--fs-h4); font-weight: var(--fw-semi-bold);}
@@ -336,7 +336,7 @@
     button:not(.transparent-btn, .hamburger-btn)[type="button"],
     input:not(.transparent-btn, .hamburger-btn)[type="button"],
     input:not(.transparent-btn, .hamburger-btn)[type="submit"],
-    a.buttonLink{
+    a.buttonType{
         position: relative;
         overflow: hidden;
         padding: var(--btn-padding);
@@ -359,7 +359,8 @@
     button:not(.transparent-btn, .hamburger-btn)[type="submit"]:is(:hover,:focus-visible),
     button:not(.transparent-btn, .hamburger-btn)[type="button"]:is(:hover,:focus-visible),
     input:not(.transparent-btn, .hamburger-btn)[type="button"]:is(:hover,:focus-visible),
-    input:not(.transparent-btn, .hamburger-btn)[type="submit"]:is(:hover,:focus-visible){
+    input:not(.transparent-btn, .hamburger-btn)[type="submit"]:is(:hover,:focus-visible),
+    a.buttonType:is(:hover,:focus-visible){
       background-color: var(--btn-bg-hover);
     }
 
@@ -367,7 +368,8 @@
     button:not(.transparent-btn, .hamburger-btn)[type="submit"]:is(:focus, :active),
     button:not(.transparent-btn, .hamburger-btn)[type="button"]:is(:focus, :active),
     input:not(.transparent-btn, .hamburger-btn)[type="button"]:is(:focus, :active),
-    input:not(.transparent-btn, .hamburger-btn)[type="submit"]:is(:focus, :active){
+    input:not(.transparent-btn, .hamburger-btn)[type="submit"]:is(:focus, :active),
+    a.buttonType:is(:focus, :active){
       scale: .9;
     }
 
@@ -376,7 +378,8 @@
     button:not(.transparent-btn, .hamburger-btn)[type="submit"],
     button:not(.transparent-btn, .hamburger-btn)[type="button"],
     input:not(.transparent-btn, .hamburger-btn)[type="button"],
-    input:not(.transparent-btn, .hamburger-btn)[type="submit"]{
+    input:not(.transparent-btn, .hamburger-btn)[type="submit"],
+    a.buttonType{
       padding-block: .3em;
       border-radius: var(--btn-border-radius-xs);
     }
@@ -535,9 +538,9 @@
       align-items: center;
       resize: none;
       font-size: var(--fs-input);
-      caret-color: var(--clr-accent);
+      caret-color: var(--clr-primary);
       padding: var(--input-padding);
-      background-color: var(--clr-light);
+      background-color: var(--clr-neutral-light);
       border: var(--input-border);
       border-radius: var(--input-border-radius);
       color: var(--input-clr);
@@ -565,7 +568,7 @@
     /* Custom Checkbox */
     input[type="checkbox"],
     input[type="radio"]{
-      accent-color: var(--clr-accent);
+      accent-color: var(--clr-primary);
     }
 
     /* Input Block Styling */
@@ -606,14 +609,14 @@
     /* Scroll Bar */
     @supports(scrollbar-color: red blue){
         *{
-            scrollbar-color: var(--clr-accent) var(--clr-dark);
+            scrollbar-color: var(--clr-primary) var(--clr-neutral-dark);
             scrollbar-width: thin;
         }
     }
 
     /* Selection Color */
     ::selection{
-        background-color: var(--clr-accent-300);
+        background-color: var(--clr-primary-300);
     }
 
     /*  Controlling the width and height of elements */
@@ -737,48 +740,48 @@
 
     /* Fast Layouts */
 
-/* Flexbox Utilities */
-.f { display: flex; align-items: center; }
+    /* Flexbox Utilities */
+    .f { display: flex; align-items: center; }
 
-.fw { flex-wrap: wrap; }
-.fnw { flex-wrap: nowrap; }
+    .fw { flex-wrap: wrap; }
+    .fnw { flex-wrap: nowrap; }
 
-.fsb { display: flex; align-items: center; justify-content: space-between !important; }
-.fsa { display: flex; align-items: center; justify-content: space-around; }
-.fse { display: flex; align-items: center; justify-content: space-evenly; }
+    .fsb { display: flex; align-items: center; justify-content: space-between !important; }
+    .fsa { display: flex; align-items: center; justify-content: space-around; }
+    .fse { display: flex; align-items: center; justify-content: space-evenly; }
 
-.fst { display: flex; align-items: flex-start; }
-.fend { display: flex; align-items: flex-end; }
+    .fst { display: flex; align-items: flex-start; }
+    .fend { display: flex; align-items: flex-end; }
 
-.fc { display: flex; align-items: center; justify-content: center; }
-.fcx { display: flex; align-items: start; justify-content: center; }
-.fcy { display: flex; justify-content: start; align-items: center; }
+    .fc { display: flex; align-items: center; justify-content: center; }
+    .fcx { display: flex; align-items: start; justify-content: center; }
+    .fcy { display: flex; justify-content: start; align-items: center; }
 
-.fc-col { display: flex; flex-direction: column; }
-.fc-col-r { display: flex; flex-direction: column-reverse; }
-.fc-row-r { display: flex; flex-direction: row-reverse; }
+    .fc-col { display: flex; flex-direction: column; }
+    .fc-col-r { display: flex; flex-direction: column-reverse; }
+    .fc-row-r { display: flex; flex-direction: row-reverse; }
 
-.as-start { align-self: start; }
-.as-center { align-self: center; }
-.as-end { align-self: end; }
+    .as-start { align-self: start; }
+    .as-center { align-self: center; }
+    .as-end { align-self: end; }
 
-.js-start { justify-self: start; }
-.js-center { justify-self: center; }
-.js-end { justify-self: end; }
+    .js-start { justify-self: start; }
+    .js-center { justify-self: center; }
+    .js-end { justify-self: end; }
 
-.g-sm { gap: 8px; }
-.g-md { gap: 16px; }
-.g-lg { gap: 32px; }
+    .g-sm { gap: 8px; }
+    .g-md { gap: 16px; }
+    .g-lg { gap: 32px; }
 
-/* Grid Utilities */
-.gd { display: grid; }
-.gd-center { display: grid; place-items: center; }
-.gd-2c { grid-column: span 2; }
-.gd-3c { grid-column: span 3; }
-.gd-auto { grid-auto-flow: column; }
+    /* Grid Utilities */
+    .gd { display: grid; }
+    .gd-center { display: grid; place-items: center; }
+    .gd-2c { grid-column: span 2; }
+    .gd-3c { grid-column: span 3; }
+    .gd-auto { grid-auto-flow: column; }
 
 
-.cs { margin-inline: auto; justify-self: center; }
+    .cs { margin-inline: auto; justify-self: center; }
 
     /* Custom Cursor (Pointer) */
     .cursor{
@@ -921,13 +924,13 @@
     .opacity-80{ opacity: .8; }
     .opacity-90{ opacity: .9; }
 
-    .clr-dark{ color: var(--clr-dark); }
+    .clr-dark{ color: var(--clr-neutral-dark); }
 
-    .clr-light{ color: var(--clr-light); }
+    .clr-light{ color: var(--clr-neutral-light); }
 
-    .clr-accent{ color: var(--clr-accent); }
+    .clr-primary{ color: var(--clr-primary); }
 
-    .clr-accent-h:is(:hover, :focus-visible){ color: var(--clr-accent); }
+    .clr-primary-h:is(:hover, :focus-visible){ color: var(--clr-primary); }
 
     .transition{ transition: var(--transition); }
 
@@ -1003,7 +1006,7 @@
       top: 3.5em;
       left: 0;
       min-width: 100%;
-      background-color: var(--clr-light);
+      background-color: var(--clr-neutral-light);
       border-radius: 10px;
       border: var(--input-border);
       box-shadow: var(--dropdown-shadow);
@@ -1025,7 +1028,7 @@
     /* Scroll Bar */
     @supports(scrollbar-color: red blue){
       .pureflowcss-dropdown .pureflowcss-dropdown-items{
-          scrollbar-color: var(--clr-rgba-gray) var(--clr-light);
+          scrollbar-color: var(--clr-rgba-gray) var(--clr-neutral-light);
           scrollbar-width: thin;
       }
     }
@@ -1544,7 +1547,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: var(--clr-accent);
+      background-color: var(--clr-primary);
       z-index: 5;
       border-radius: 100vw;
       width: 4em;
@@ -1610,12 +1613,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: var(--clr-light);
+      color: var(--clr-neutral-light);
       font-size: var(--fs-xs);
       padding: .3em .7em .3em .5em;
       top: 0;
       left: 0;
-      background-color: var(--clr-accent);
+      background-color: var(--clr-primary);
       border-bottom-right-radius: 15px;
     }
 
