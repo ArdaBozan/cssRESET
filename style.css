@@ -129,6 +129,7 @@
 
         --ff-main: ;
 
+        
         /* Font Weights */
         --fw-black: 900;
         --fw-extra-bold: 800;
@@ -139,6 +140,7 @@
         --fw-light: 300;
         --fw-extra-light: 200;
         --fw-thin: 100;
+
 
         /* Font Sizes */
         --fs-main: clamp(1.1em, 2vw, 1.1em);
@@ -168,7 +170,7 @@
         --clr-bg: hsl(0, 0%, 100%);
 
 
-        /* Primary Colors */
+        /* Neutral Colors */
         --clr-neutral-light: hsl(0, 0%, 100%);
         --clr-neutral-dark: hsl(0, 0%, 0%);
         
@@ -187,7 +189,7 @@
         --dropdown-shadow: ;
 
         
-        /* Modal */
+        /* Modal Styling */
         --modal-bg: ;               /* Set bg color */
         --modal-content-bg: ;       /* Set modal bg color */
 
@@ -197,7 +199,7 @@
         --modal-content-clr: ;      /* Set color */
 
 
-        /* Alert */
+        /* Alert Styling */
         --alert-bg: ;               /* Set bg color */
         --alert-clr: ;              /* Set color */
         
@@ -206,7 +208,7 @@
         --alert-padding: ;          /* Set padding */
 
 
-        /* primary Colors */
+        /* Primary Colors */
         --clr-primary: ;
       
         --clr-primary-100: ;
@@ -222,7 +224,11 @@
         --clr-primary-lighter: ;
         --clr-primary-darker: ;
 
+
+         /* Accent Colors */
+         --clr-accent: ;
         
+
         /* Gradient Colors */
         --gradient-primary-y: ;
         --gradient-primary-x: ;
