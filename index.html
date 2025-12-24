@@ -3,556 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>CSS RESET</title>
+    <title>Santa Gifts Catch</title>
+    <link rel="stylesheet" href="santa-game-styles.css">
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-    :root{
-        --clr-primary: #1e1e1e;
-        --btn-bg-hover: #363636;
-
-        --btn-secondary-bg: #f92c2c;
-        --btn-secondary-txt: #fff;
-        --btn-secondary-border-clr: #407fc7;
-        --btn-secondary-hover: #00b49f;
-
-        --btn-border: 2px solid #1e1e1e;
-        --input-border: 1.5px solid #dcdcdc;
-
-        --clr-btn: #fff;
-
-        --input-clr: hsl(0, 0%, 24%);
-        --input-bg-hover: #f7f7f7;
-
-        --input-file-bg-hover: var(--clr-rgba-gray-softer);
-
-        --modal-bg: hsla(0, 0%, 0%, .3); /* Set bg color */
-        --modal-content-bg: #fff; /* Set modal bg color */
-        --modal-content-padding: 1.2em; /* Set padding */
-        --modal-content-radius: 10px; /* Set radius */
-
-        --dropdown-bg: hsl(0, 0%, 100%);   
-    --dropdown-clr: hsl(0, 0%, 38%);   
-    --dropdown-hover: hsl(0, 0%, 94%); 
-    --dropdown-padding: .85em 1.2em; 
-    --dropdown-shadow: 0 4px 6px rgba(0, 0, 0, 0.042);
-
-    --input-border-radius: 10px;  /* Recommended Radius: 10px */
-    --input-padding: .65em 1.2em;
-    --input-clr-file: hsl(0, 0%, 34%);   
-
-    --alert-bg: #fff;               /* Set bg color */
-    --alert-clr: #000;              /* Set color */
-    
-    --alert-border: 1px solid red;           /* Set border */
-    --alert-radius: 10px ;           /* Set border radius */
-
-    --alert-padding: 1em;            /* Set padding */
-    
-
-    --gradient-btn-border-size: 2px;
-    }
-
-    body{
-        font-family: "Inter", serif;
-        font-optical-sizing: auto;
-    }
-
-    .color-box {
-            width: 150px;
-            height: 100px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 14px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .rgba-gray-much-darker-opacity {
-            background-color: var(--clr-rgba-gray-much-darker-opacity);
-        }
-        .rgba-gray-darker-opacity {
-            background-color: var(--clr-rgba-gray-darker-opacity);
-        }
-        .rgba-gray-much-darker {
-            background-color: var(--clr-rgba-gray-much-darker);
-        }
-        .rgba-gray-med-darker {
-            background-color: var(--clr-rgba-gray-med-darker);
-        }
-        .rgba-gray-darker {
-            background-color: var(--clr-rgba-gray-darker);
-        }
-        .rgba-gray {
-            background-color: var(--clr-rgba-gray);
-            color: #1e1e1e;
-        }
-        .rgba-gray-soft {
-            background-color: var(--clr-rgba-gray-soft);
-            color: #1e1e1e;
-        }
-        .rgba-gray-softer {
-            background-color: var(--clr-rgba-gray-softer);
-            color: #1e1e1e;
-        }
-        .gray-darker {
-            background-color: var(--clr-gray-darker);
-        }
-        .gray {
-            background-color: var(--clr-gray);
-        }
-        .gray-softer {
-            background-color: var(--clr-gray-softer);
-        }
-        .gray-much-softer {
-            background-color: var(--clr-gray-much-softer);
-            color: #000;
-        }
-
-
-
-        .font-box {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .color-container{
-            max-width: 100%;
-            overflow-x: auto;
-        }
-
-        .fs-main { font-size: var(--fs-main); }
-        .fs-h1 { font-size: var(--fs-h1); }
-        .fs-h2 { font-size: var(--fs-h2); }
-        .fs-h3 { font-size: var(--fs-h3); }
-        .fs-h4 { font-size: var(--fs-h4); }
-        .fs-h5 { font-size: var(--fs-h5); }
-        .fs-h6 { font-size: var(--fs-h6); }
-
-        .fs-larger { font-size: var(--fs-larger); }
-        .fs-xl { font-size: var(--fs-xl); }
-        .fs-l { font-size: var(--fs-l); }
-        .fs-m { font-size: var(--fs-m); }
-        .fs-mm { font-size: var(--fs-mm); }
-        .fs-sm { font-size: var(--fs-sm); }
-        .fs-s { font-size: var(--fs-s); }
-        .fs-ms { font-size: var(--fs-ms); }
-        .fs-xs { font-size: var(--fs-xs); }
-
-        .fw-bold { font-weight: var(--fw-bold); }
-        .fw-semi-bold { font-weight: var(--fw-semi-bold); }
-        .fw-normal-bolder { font-weight: var(--fw-normal-bolder); }
-        .fw-normal { font-weight: var(--fw-normal); }
-        .fw-light { font-weight: var(--fw-light); }
-
-
-    
-</style>
 <body>
- <main class="px-30 pb-25">
-    <!-- -->
-    <h6 style="margin-top:2em;">Gray Colors</h6>
-    <div class="flex-center color-container width-100 gap-10">
-        <div class="color-box rgba-gray-much-darker-opacity">Much Darker Opacity</div>
-        <div class="color-box rgba-gray-darker-opacity">Darker Opacity</div>
-        <div class="color-box rgba-gray-much-darker">Much Darker</div>
-        <div class="color-box rgba-gray-med-darker">Med Darker</div>
-        <div class="color-box rgba-gray-darker">Darker</div>
-        <div class="color-box rgba-gray">Gray</div>
-        <div class="color-box rgba-gray-soft">Gray Soft</div>
-        <div class="color-box rgba-gray-softer">Gray Softer</div>
-        <div class="color-box gray-darker">Gray Darker</div>
-        <div class="color-box gray">Gray</div>
-        <div class="color-box gray-softer">Gray Softer</div>
-        <div class="color-box gray-much-softer">Much Softer</div>
-    </div>
-
-    <div>
-        <h6 style="margin-top:2em;">Font Sizes</h6>
-        <div class="font-box fs-h1">Heading 1</div>
-        <div class="font-box fs-h2">Heading 2</div>
-        <div class="font-box fs-h3">Heading 3</div>
-        <div class="font-box fs-h4">Heading 4</div>
-        <div class="font-box fs-h5">Heading 5</div>
-        <div class="font-box fs-h6">Heading 6</div>
-    
-        <div class="font-box fs-larger">Larger Font</div>
-        <div class="font-box fs-xl">Extra Large Font</div>
-        <div class="font-box fs-l">Large Font</div>
-        <div class="font-box fs-m">Medium Font</div>
-        <div class="font-box fs-mm">Medium Minus Font</div>
-        <div class="font-box fs-main">Main Font Size</div>
-        <div class="font-box fs-sm">Small Font</div>
-        <div class="font-box fs-s">Smaller Font</div>
-        <div class="font-box fs-ms">Medium Small Font</div>
-        <div class="font-box fs-xs">Extra Small Font</div>
-    </div>
-
-    <div>
-        <h6 style="margin-top:2em;">Font Weights (Your font may not support some values)</h6>
-        <div class="font-box    fw-900   fw-black">Black Font Weight (900)</div>
-        <div class="font-box    fw-800   fw-extra-bold">Extra Bold Font Weight (800)</div>
-        <div class="font-box    fw-700   fw-bold">Bold Font Weight (700)</div>
-        <div class="font-box    fw-600   fw-semi-bold">Semi-Bold Font Weight (600)</div>
-        <div class="font-box    fw-500   fw-medium">Medium Font Weight (500)</div>
-        <div class="font-box    fw-400   fw-regular">Regular Font Weight (400)</div>
-        <div class="font-box    fw-300   fw-light">Light Font Weight (300)</div>
-        <div class="font-box    fw-200   fw-extra-light">Extra Light Font Weight (200)</div>
-        <div class="font-box    fw-100   fw-thin">Thin Font Weight (100)</div>
-    </div>
-
-    <div class="flex-column g-10 fit-content">
-        <h6 style="margin-top:2em;">Buttons</h6>
-        <button style="border: 2.5px solid var(--clr-primary);">Normal Button</button>
-        <button class="secondaryBtn">Secondary Button</button>
-        <button class="btnGray">Gray Button</button>
-        <button class="btnGrayBorderless">Borderless Gray Button</button>
-
-        <button class="btn_bgG" data="Gradient (Border)"></button>
-        <button class="btnb_bG" data="Gradient (Border)"></button>
-
-    </div>
-
-    <div class="flex-column g-10 fit-content">
-        <h6 style="margin-top:2em;">Inputs</h6>
-        <input type="text" placeholder="Normal Input">
-        
-        <textarea name="" id="" placeholder="Text Area"></textarea>
-
-        <div class="width-100 fileInput-area flex" title="">
-            <input name="" type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple required>
-            <label class="cursor flex width-100 gap-50" id="inputLabel" for="file"><svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.5133 1.54215C10.9082 0.914521 9.92721 0.914521 9.32214 1.54215L1.78925 9.35596C0.780804 10.402 0.780804 12.098 1.78925 13.144C2.7977 14.1901 4.43271 14.1901 5.44116 13.144L10.7386 7.64904C10.9403 7.43983 11.2673 7.43983 11.469 7.64904C11.6707 7.85825 11.6707 8.19744 11.469 8.40665L6.17154 13.9017C4.75972 15.3661 2.47069 15.3661 1.05887 13.9017C-0.352956 12.4372 -0.352956 10.0628 1.05887 8.59835L8.59175 0.784536C9.6002 -0.261511 11.2352 -0.261512 12.2437 0.784535C13.2521 1.83058 13.2521 3.52656 12.2437 4.57261L4.71515 12.3818C4.71321 12.3839 4.71124 12.3859 4.70926 12.388L4.70453 12.3929L4.70301 12.3944L4.70146 12.396C4.09561 13.014 3.1216 13.0108 2.51963 12.3864C1.91457 11.7588 1.91457 10.7412 2.51963 10.1136L7.89802 4.53452C8.09971 4.32531 8.42671 4.3253 8.6284 4.53451C8.83009 4.74372 8.8301 5.08291 8.62841 5.29213L3.25002 10.8712C3.04833 11.0804 3.04833 11.4196 3.25002 11.6288C3.45022 11.8365 3.77397 11.838 3.97592 11.6334L11.5133 3.81499C12.1184 3.18736 12.1184 2.16978 11.5133 1.54215Z" fill="#F92C2C"/></svg>
-            <p>Select File</p>
-            </label>
-        </div>
-    </div>
-
-    <div class="flex-column g-10 fit-content">
-        <h6 style="margin-top:2em;">Input Block</h6>
-        <div class="input-block">
-            <label for="input">Title</label>
-            <input type="text" placeholder="input">
-        </div>
-    </div>
-
-    <div class="flex-column g-10 fit-content">
-        <h6 style="margin-top:2em;">Dropdown</h6>
-        <div class="pureflowcss-dropdown" title="" data-index="1">
-            <label name="" id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
-                <p name="">1 Column Dropdown</p>
-                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
-                </svg>
-            </label>
-            <div class="pureflowcss-dropdown-items" data-index="1">
-                <!-- Examples -->
-                <span>Example 1</span>
-                <span>Example 2</span>
-                <span>Example 3</span>
-                <span>Example 4</span>
+    <div id="gameContainer">
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="screen active">
+            <div class="welcome-content">
+                <h1 class="welcome-title">WELCOME TO</h1>
+                <h2 class="game-title">SANTA GIFTS CATCH</h2>
+                <div class="welcome-message">
+                    <span class="pause-icon">🎁</span>
+                    <p>Your mission is to help Santa collect the falling gifts and save Christmas before it's too late!</p>
+                </div>
+                <button class="start-button" onclick="showMapSelection()">LET'S SAVE THE CHRISTMAS!</button>
             </div>
         </div>
 
-        <div class="pureflowcss-dropdown" title="" data-index="1">
-            <label name="" id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
-                <p name="">2 Column Dropdown</p>
-                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
-                </svg>
-            </label>
-            <div class="pureflowcss-dropdown-items" data-type="med-dropdown-list" data-index="1">
-                <!-- Examples -->
-                <span>Example 1</span>
-                <span>Example 2</span>
-                <span>Example 3</span>
-                <span>Example 4</span>
-            </div>
-        </div>  
-        
-        <div class="pureflowcss-dropdown" title="" data-index="1">
-            <label name="" id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
-                <p name="">3 Column Dropdown</p>
-                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
-                </svg>
-            </label>
-            <div class="pureflowcss-dropdown-items" data-type="long-dropdown-list" data-index="1">
-                <!-- Examples -->
-                <span>Example 1</span>
-                <span>Example 2</span>
-                <span>Example 3</span>
-                <span>Example 4</span>
-            </div>
-        </div>  
-
-        <div class="pureflowcss-dropdown" title="" data-index="1">
-            <label name="" id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
-                <p name="">Very Long 4 Column Dropdown</p>
-                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
-                </svg>
-            </label>
-            <div class="pureflowcss-dropdown-items" data-type="longer-dropdown-list" data-index="1">
-                <!-- Examples -->
-                <span>Example 1</span>
-                <span>Example 2</span>
-                <span>Example 3</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4d asd as</span>
-                <span>Example 4d asd as</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4</span>
-                <span>Example 4d sadasdas </span>
+        <!-- How To Play Screen -->
+        <div id="howToPlayScreen" class="screen">
+            <div class="info-content">
+                <h2 class="section-title">How To Play:</h2>
+                <div class="loading-indicator">
+                    <span class="spinner"></span>
+                    <span>Loading...</span>
+                </div>
+                <div class="instructions-box">
+                    <div class="instruction-item">
+                        <span class="icon">❓</span>
+                        <p>Move the gift sack left and right to catch the gifts Santa sends from the sky.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="icon">🎁</span>
+                        <p>Each gift you catch increases your score.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="icon">⏱</span>
+                        <p>Every gift also adds extra time to your countdown.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="icon">⚠️</span>
+                        <p>Be careful! You must collect the gifts before time runs out!</p>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="icon">💣</span>
+                        <p>Watch out for the bombs sent by the Grinch! They will damage the gifts and may end the game.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="icon">🔥</span>
+                        <p>The more gifts you collect, the higher your score!</p>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="icon">🏆</span>
+                        <p>Reach the top of the leaderboard and become Santa's best helper by saving Christmas!</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="pureflowcss-dropdown" title="" data-index="1">
-            <label id="show-dropdown-items" class="show-dropdown-items cursor" data-index="1" for="dropdown">
-                <p name="modelP">Dropdown with an active-search</p>
-                <svg id="dropdownSvg" class="dropdownSvg transition" width=".9em" height=".9em" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.5 0.5L5.89104 6.62403C6.29633 7.08443 7.01677 7.0748 7.40962 6.60375L12.5 0.5" stroke="black" stroke-opacity="0.5"/>
-                </svg>
-            </label>
-            <div data-type="longer-dropdown-list" class="pureflowcss-dropdown-items" data-index="1">
-                <div class="pureflow-css-dropdown-add-column flex-center"><div class="pureflowcss-input-container flex-space"><input id="pureflowcss-active-search-input" type="text" placeholder="Search..."></div></div>
-                <!-- Examples -->
-                <span>Sedan</span>
-                <span>Hatchback</span>
-                <span>SUV</span>
-                <span>Crossover</span>
-                <span>Coupe</span>
-                <span>Cabriolet</span>
-                <span>Minivan</span>
-                <span>Pick-up</span>
-                <span>Station Wagon</span>
-                <span>Roadster</span>
-                <span>Van</span>
+        <!-- Map Selection Screen -->
+        <div id="mapSelectionScreen" class="screen">
+            <h2 class="section-title">Select Map to Play</h2>
+            <div class="map-grid">
+                <div class="map-card" data-map="snow-village" onclick="selectMap('snow-village')">
+                    <img src="wallpapers/Type=Snow Village.jpg" alt="Snow Village">
+                </div>
+                <div class="map-card" data-map="winter-night" onclick="selectMap('winter-night')">
+                    <img src="wallpapers/Type=Winter Night.jpg" alt="Winter Night">
+                </div>
+                <div class="map-card" data-map="cozy-christmas" onclick="selectMap('cozy-christmas')">
+                    <img src="wallpapers/Type=Cozy Christmas.jpg" alt="Cozy Christmas">
+                </div>
+                <div class="map-card" data-map="red-noel" onclick="selectMap('red-noel')">
+                    <img src="wallpapers/Type=Red Noel.jpg" alt="Red Noel">
+                </div>
+            </div>
+        </div>
+
+        <!-- Items Info Screen -->
+        <div id="itemsInfoScreen" class="screen">
+            <h2 class="section-title">Items & Points</h2>
+            <div class="items-list">
+                <div class="item-row">
+                    <img src="objects/Type=Snowflake.svg" alt="Snowflake">
+                    <span>Snowflake – 5 points</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Christmas Stocking.svg" alt="Stocking">
+                    <span>Christmas Stocking – 10</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Winter Beanie.svg" alt="Beanie">
+                    <span>Winter Beanie – 10</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Gingerbread Man.svg" alt="Gingerbread">
+                    <span>Gingerbread Man – 10</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Cookie.svg" alt="Cookie">
+                    <span>Cookie – 10</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Winter Mitten.svg" alt="Mitten">
+                    <span>Winter Mitten – 10</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Gift Box.svg" alt="Gift">
+                    <span>Gift Box – 15</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Lollipop Candy.svg" alt="Lollipop">
+                    <span>Lollipop Candy – 15</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Christmas Sweater.svg" alt="Sweater">
+                    <span>Christmas Sweater – 15</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Snow Globe.svg" alt="Snow Globe">
+                    <span>Snow Globe – 20</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Snowman.svg" alt="Snowman">
+                    <span>Snowman – 20</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Ice Skate.svg" alt="Ice Skate">
+                    <span>Ice Skate – 20</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Football.svg" alt="Football">
+                    <span>Football – 20</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Basketball.svg" alt="Basketball">
+                    <span>Basketball – 20</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Christmas Angel.svg" alt="Angel">
+                    <span>Christmas Angel – 25</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Golden Star.svg" alt="Golden Star">
+                    <span>Golden Star – 30</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Laptop.svg" alt="Laptop">
+                    <span>Laptop – 40</span>
+                </div>
+                <div class="item-row">
+                    <img src="objects/Type=Smartphone.svg" alt="Phone">
+                    <span>Smartphone – 50</span>
+                </div>
+                <div class="item-row bomb">
+                    <img src="objects/Type=Bomb.svg" alt="Bomb">
+                    <span>Bomb (Negative 30 points)</span>
+                </div>
+            </div>
+            <div class="bag-info">
+                <h3>Bag Capacity:</h3>
+                <div class="bag-stages">
+                    <div class="bag-stage">
+                        <img src="bag/Capasity=Empty.png" alt="Empty">
+                        <span>Score<br>100-300</span>
+                    </div>
+                    <div class="bag-stage">
+                        <img src="bag/Capasity=2/4.png" alt="Half">
+                        <span>Score<br>300-500</span>
+                    </div>
+                    <div class="bag-stage">
+                        <img src="bag/Capasity=3/4.png" alt="Almost Full">
+                        <span>Score<br>500-700</span>
+                    </div>
+                    <div class="bag-stage">
+                        <img src="bag/Capasity=Full.png" alt="Full">
+                        <span>Score<br>700+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="1366" height="768"></canvas>
+
+        <!-- Game HUD -->
+        <div id="gameHUD">
+            <div class="hud-left">
+                <div class="score-display">
+                    <span class="score-label">Score:</span>
+                    <span class="score-value" id="scoreValue">0</span>
+                </div>
+            </div>
+            <div class="hud-right">
+                <div class="time-display">
+                    <span class="time-value" id="timeValue">02:00s</span>
+                    <span class="time-label">left!</span>
+                </div>
+                <button class="pause-button" onclick="togglePause()">⏸</button>
+            </div>
+            <div class="top-character" id="topCharacter">
+                <img src="top-screen/Character=Santa - Classic.png" alt="Santa" id="santaImage">
+            </div>
+        </div>
+
+        <!-- Bonus Notification -->
+        <div id="bonusNotification" class="bonus-notify">
+            <span id="bonusText">30+</span>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="screen">
+            <div class="gameover-content">
+                <h1 class="gameover-title">GAME OVER!</h1>
+                <div class="final-score-box">
+                    <p class="final-score-label">Your Final Score</p>
+                    <p class="final-score-value" id="finalScoreValue">0</p>
+                </div>
+                <div class="gameover-buttons">
+                    <button class="game-button play-again" onclick="restartGame()">Play Again</button>
+                    <button class="game-button back-home" onclick="backToHome()">Back to Home</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="flex-column g-10 fit-content">
-        <h6 style="margin-top:2em;">Input Range</h6>
-        <div class="price-range-area grid gap-50">
-            <p class="maxPrice-txt fw-semi-bold">Price<span class="fw-normal">()</span></p>
-            <div class="grid price-range-container">
-                <div class="price-text flex" style="position: relative;">
-                    <p id="priceLabel" name="priceP" style="white-space: nowrap; position: absolute; transform: translateX(-50%);"></p>
-                </div>
-                <input class="cursor" type="range" id="priceRange" min="0" max="12000" value="12000" step="100">
-            </div>
-        </div>
-    </div>
-
-    <div class="flex-column g-10 fit-content">
-        <h6 style="margin-top:2em;">Full Screen Modal</h6>
-        <button class="active-modal">Active Modal</button>
-    </div>
-
-    <div class="flex-column g-10 fit-content">
-        <h6 style="margin-top:2em;">Alerts</h6>
-        <button class="showAlerts">Show Alerts (3 Seconds)</button>
-        <div class="alertContainer alertBottomLeft">Alert Bottom Left</div>
-        <div class="alertContainer alertBottomRight">Alert Bottom Right</div>
-        <div class="alertContainer alertTopLeft">Alert Top Left</div>
-        <div class="alertContainer alertTopRight">Alert Top Right</div>
-        <div class="alertContainer alertTop">Alert Top</div>
-        <div class="alertContainer alertBottom">Alert Bottom</div>
-        <div class="alertContainer alertCenter">Alert Center</div>
-    </div>
-
-    <div>
-        <h6 style="margin-top:2em;">Animations</h6>
-        <div class="font-box fs-h4   add-scale-animation">Scale Animations</div>
-        <div class="font-box fs-h4   add-text-animation">Text Animations</div>
-        <div class="font-box fs-h4   add-x-toRight-animation">x-toRight Animations</div>
-        <div class="font-box fs-h4   add-x-toLeft-animation">x-toLeft Animations</div>
-        <div class="font-box fs-h4   add-opacity-animation">Opacity Animations</div>
-        <div style="margin-top:2em;" class="fs-h6">You can create custom animations! Click here to get info</div>
-    </div>
-
-    <div>
-        <h6 style="margin-top:2em;">Card Slider</h6>
-    <section class="pureflowcss-card-slider-area">
-        <div class="flex-space card-slider-top width">
-            <h6>Card Slider Header</h6>
-            <div class="flex-center gap-50">
-                <button class="card-slider-buttons" id="moveLeft"><svg width="1em" height="1em" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.268485 10.6428C-0.0894952 10.2878 -0.0894951 9.7122 0.268485 9.35718L9.43515 0.266266C9.79313 -0.0887554 10.3735 -0.0887554 10.7315 0.266266C11.0895 0.62129 11.0895 1.19689 10.7315 1.55192L2.21303 10L10.7315 18.4481C11.0895 18.8031 11.0895 19.3787 10.7315 19.7337C10.3735 20.0888 9.79313 20.0888 9.43515 19.7337L0.268485 10.6428Z" fill="#0F172A" fill-opacity="0.44"/></svg>
-                </button>
-                <button class="card-slider-buttons" id="moveRight"><svg width="1em" height="1em" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.7315 10.6428C11.0895 10.2878 11.0895 9.7122 10.7315 9.35718L1.56485 0.266266C1.20687 -0.0887554 0.626466 -0.0887554 0.268485 0.266266C-0.0894957 0.62129 -0.0894957 1.19689 0.268485 1.55192L8.78697 10L0.268485 18.4481C-0.0894957 18.8031 -0.0894957 19.3787 0.268485 19.7337C0.626466 20.0888 1.20687 20.0888 1.56485 19.7337L10.7315 10.6428Z" fill="#0F172A" fill-opacity="0.44"/></svg>
-                </button>
-            </div>
-        </div>
-
-        <div class="pureflowcss-card-slider-container-parent">
-        <div class="pureflowcss-card-slider-container">
-            <div onclick="window.location.href='#'" class="pureflowcss-card-slider-card">
-                <div class="pureflowcss-card-slider-img-area">
-                    <img src="" alt="card-img">
-                    <a draggable="false" href="#"><svg width="38" height="25" viewBox="0 0 38 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.3922 13.6172C38.0092 13.0002 38.0092 11.9998 37.3922 11.3828L27.3371 1.32771C26.7201 0.710684 25.7197 0.710684 25.1027 1.32771C24.4857 1.94474 24.4857 2.94514 25.1027 3.56217L34.0405 12.5L25.1027 21.4378C24.4857 22.0549 24.4857 23.0553 25.1027 23.6723C25.7197 24.2893 26.7201 24.2893 27.3371 23.6723L37.3922 13.6172ZM0.724976 14.08H36.275V10.92H0.724976V14.08Z" fill="white"/></svg>
-                    </a>
-                </div>
-                
-                <div class="pureflowcss-card-slider-info-area">
-                    <span>Card Example</span>
-                    <h6>123$</h6>
-                </div>
-            </div>
-
-            <div onclick="window.location.href='#'" class="pureflowcss-card-slider-card">
-                <div class="pureflowcss-card-slider-img-area">
-                    <img src="" alt="card-img">
-                    <a draggable="false" href="#"><svg width="38" height="25" viewBox="0 0 38 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.3922 13.6172C38.0092 13.0002 38.0092 11.9998 37.3922 11.3828L27.3371 1.32771C26.7201 0.710684 25.7197 0.710684 25.1027 1.32771C24.4857 1.94474 24.4857 2.94514 25.1027 3.56217L34.0405 12.5L25.1027 21.4378C24.4857 22.0549 24.4857 23.0553 25.1027 23.6723C25.7197 24.2893 26.7201 24.2893 27.3371 23.6723L37.3922 13.6172ZM0.724976 14.08H36.275V10.92H0.724976V14.08Z" fill="white"/></svg>
-                    </a>
-                </div>
-                
-                <div class="pureflowcss-card-slider-info-area">
-                    <span>Card Example</span>
-                    <h6>123$</h6>
-                </div>
-            </div>
-
-            <div onclick="window.location.href='#'" class="pureflowcss-card-slider-card">
-                <div class="pureflowcss-card-slider-img-area">
-                    <img src="" alt="card-img">
-                    <a draggable="false" href="#"><svg width="38" height="25" viewBox="0 0 38 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.3922 13.6172C38.0092 13.0002 38.0092 11.9998 37.3922 11.3828L27.3371 1.32771C26.7201 0.710684 25.7197 0.710684 25.1027 1.32771C24.4857 1.94474 24.4857 2.94514 25.1027 3.56217L34.0405 12.5L25.1027 21.4378C24.4857 22.0549 24.4857 23.0553 25.1027 23.6723C25.7197 24.2893 26.7201 24.2893 27.3371 23.6723L37.3922 13.6172ZM0.724976 14.08H36.275V10.92H0.724976V14.08Z" fill="white"/></svg>
-                    </a>
-                </div>
-                
-                <div class="pureflowcss-card-slider-info-area">
-                    <span>Card Example</span>
-                    <h6>123$</h6>
-                </div>
-            </div>
-
-            <div onclick="window.location.href='#'" class="pureflowcss-card-slider-card">
-                <div class="pureflowcss-card-slider-img-area">
-                    <img src="IMGs/productIMGs/table.webp" alt="card-img">
-                    <a draggable="false" href="#"><svg width="38" height="25" viewBox="0 0 38 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.3922 13.6172C38.0092 13.0002 38.0092 11.9998 37.3922 11.3828L27.3371 1.32771C26.7201 0.710684 25.7197 0.710684 25.1027 1.32771C24.4857 1.94474 24.4857 2.94514 25.1027 3.56217L34.0405 12.5L25.1027 21.4378C24.4857 22.0549 24.4857 23.0553 25.1027 23.6723C25.7197 24.2893 26.7201 24.2893 27.3371 23.6723L37.3922 13.6172ZM0.724976 14.08H36.275V10.92H0.724976V14.08Z" fill="white"/></svg>
-                    </a>
-                </div>
-                
-                <div class="pureflowcss-card-slider-info-area">
-                    <span>Card Example</span>
-                    <h6>123$</h6>
-                </div>
-            </div>
-
-            <div onclick="window.location.href='#'" class="pureflowcss-card-slider-card">
-                <div class="pureflowcss-card-slider-img-area">
-                    <img src="" alt="card-img">
-                    <a draggable="false" href="#"><svg width="38" height="25" viewBox="0 0 38 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.3922 13.6172C38.0092 13.0002 38.0092 11.9998 37.3922 11.3828L27.3371 1.32771C26.7201 0.710684 25.7197 0.710684 25.1027 1.32771C24.4857 1.94474 24.4857 2.94514 25.1027 3.56217L34.0405 12.5L25.1027 21.4378C24.4857 22.0549 24.4857 23.0553 25.1027 23.6723C25.7197 24.2893 26.7201 24.2893 27.3371 23.6723L37.3922 13.6172ZM0.724976 14.08H36.275V10.92H0.724976V14.08Z" fill="white"/></svg>
-                    </a>
-                </div>
-                
-                <div class="pureflowcss-card-slider-info-area">
-                    <span>Card Example</span>
-                    <h6>123$</h6>
-                </div>
-            </div>
-
-            <div onclick="window.location.href='#'" class="pureflowcss-card-slider-card">
-                <div class="pureflowcss-card-slider-img-area">
-                    <img src="" alt="card-img">
-                    <a draggable="false" href="#"><svg width="38" height="25" viewBox="0 0 38 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.3922 13.6172C38.0092 13.0002 38.0092 11.9998 37.3922 11.3828L27.3371 1.32771C26.7201 0.710684 25.7197 0.710684 25.1027 1.32771C24.4857 1.94474 24.4857 2.94514 25.1027 3.56217L34.0405 12.5L25.1027 21.4378C24.4857 22.0549 24.4857 23.0553 25.1027 23.6723C25.7197 24.2893 26.7201 24.2893 27.3371 23.6723L37.3922 13.6172ZM0.724976 14.08H36.275V10.92H0.724976V14.08Z" fill="white"/></svg>
-                    </a>
-                </div>
-                
-                <div class="pureflowcss-card-slider-info-area">
-                    <span>Card Example</span>
-                    <h6>123$</h6>
-                </div>
-            </div>
-
-            <div onclick="window.location.href='#'" class="pureflowcss-card-slider-card">
-                <div class="pureflowcss-card-slider-img-area">
-                    <img src="" alt="card-img">
-                    <a draggable="false" href="#"><svg width="38" height="25" viewBox="0 0 38 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.3922 13.6172C38.0092 13.0002 38.0092 11.9998 37.3922 11.3828L27.3371 1.32771C26.7201 0.710684 25.7197 0.710684 25.1027 1.32771C24.4857 1.94474 24.4857 2.94514 25.1027 3.56217L34.0405 12.5L25.1027 21.4378C24.4857 22.0549 24.4857 23.0553 25.1027 23.6723C25.7197 24.2893 26.7201 24.2893 27.3371 23.6723L37.3922 13.6172ZM0.724976 14.08H36.275V10.92H0.724976V14.08Z" fill="white"/></svg>
-                    </a>
-                </div>
-                
-                <div class="pureflowcss-card-slider-info-area">
-                    <span>Card Example</span>
-                    <h6>123$</h6>
-                </div>
-            </div>
-
-            <div onclick="window.location.href='#'" class="pureflowcss-card-slider-card">
-                <div class="pureflowcss-card-slider-img-area">
-                    <img src="IMGs/productIMGs/table.webp" alt="card-img">
-                    <a draggable="false" href="#"><svg width="38" height="25" viewBox="0 0 38 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.3922 13.6172C38.0092 13.0002 38.0092 11.9998 37.3922 11.3828L27.3371 1.32771C26.7201 0.710684 25.7197 0.710684 25.1027 1.32771C24.4857 1.94474 24.4857 2.94514 25.1027 3.56217L34.0405 12.5L25.1027 21.4378C24.4857 22.0549 24.4857 23.0553 25.1027 23.6723C25.7197 24.2893 26.7201 24.2893 27.3371 23.6723L37.3922 13.6172ZM0.724976 14.08H36.275V10.92H0.724976V14.08Z" fill="white"/></svg>
-                    </a>
-                </div>
-                
-                <div class="pureflowcss-card-slider-info-area">
-                    <span>Card Example</span>
-                    <h6>123$</h6>
-                </div>
-            </div>
-           
-        </div>
-    </div>
-    </section>
-</div>
-
-    <div>
-        <h6 style="margin-top:2em;">Smooth Card Slider</h6>
-        <div class="pureflowcss-smooth-slider-container">
-            <div class="pureflowcss-smooth-slider-item">1</div>
-            <div class="pureflowcss-smooth-slider-item">2</div>
-            <div class="pureflowcss-smooth-slider-item">3</div>
-            <div class="pureflowcss-smooth-slider-item">4</div>
-            <div class="pureflowcss-smooth-slider-item">5</div>
-        </div>
-    </div>
- </main>
-
- <div class="fullScreenModal">
-    <div class="modalContent">
-        <h6>Content Here</h6>
-    </div>
- </div>
-
- <script src="Javascript Files/dropdown.js"></script>
- <script src="Javascript Files/inputFile.js"></script>
- <script src="Javascript Files/inputRange.js"></script>
- <script src="Javascript Files/inputNumeric.js"></script>
- <script src="Javascript Files/fullScreenModal.js"></script>
- <script src="Javascript Files/alert.js"></script>
-
- <!--<script src="Animations/variables.js"></script> -->
- <script src="Animations/animations.js"></script>
-
- 
- <script src="Sliders/cardSlider.js"></script>
- <script src="Sliders/smooth-slider.js"></script>
-
- <!--<script src="https://www.ardesigner.com.tr/animations.js"></script>-->
+    <script src="santa-game-logic.js"></script>
 </body>
 </html>
