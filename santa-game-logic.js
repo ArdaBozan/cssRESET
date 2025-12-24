@@ -294,7 +294,12 @@ function startGame() {
     resizeCanvas();
     
     // Set background
-    canvas.style.background = `url('${maps[gameState.selectedMap]}') center/cover`;
+    const gameBg = document.getElementById('gameBackground');
+    if (gameBg) {
+        gameBg.style.background = `url('${maps[gameState.selectedMap]}') center/cover`;
+        gameBg.style.display = 'block';
+    }
+    canvas.style.background = 'transparent';
     canvas.style.display = 'block';
     
     // Show HUD
@@ -462,6 +467,8 @@ function endGame() {
     
     // Hide game elements
     canvas.style.display = 'none';
+    const gameBg = document.getElementById('gameBackground');
+    if (gameBg) gameBg.style.display = 'none';
     document.getElementById('gameHUD').style.display = 'none';
     
     // Show game over screen
