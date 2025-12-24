@@ -113,11 +113,12 @@ class Player {
     
     updateSize() {
         // Responsive sizing based on container
-        this.width = Math.min(200, this.containerWidth * 0.15);
+        // Increased size for mobile visibility (min 90px, max 220px, or 25% of width)
+        this.width = Math.max(90, Math.min(220, this.containerWidth * 0.25));
         this.height = this.width;
         this.x = this.containerWidth / 2 - this.width / 2;
         this.y = this.containerHeight - this.height - 20;
-        this.speed = this.containerWidth * 0.008;
+        this.speed = Math.max(8, this.containerWidth * 0.015); // Faster speed for better control
         if (!this.targetX) this.targetX = this.x;
     }
 
@@ -156,7 +157,8 @@ class Player {
 class FallingItem {
     constructor(isBomb = false) {
         // Responsive sizing
-        const baseSize = Math.min(80, canvas.width * 0.06);
+        // Increased size for mobile visibility (min 50px, max 100px, or 13% of width)
+        const baseSize = Math.max(50, Math.min(100, canvas.width * 0.13));
         this.width = baseSize;
         this.height = baseSize;
         this.x = Math.random() * (canvas.width - this.width);
@@ -335,6 +337,9 @@ function startGameLoop() {
 function update() {
     frameCount++;
     
+    // Update player keyboard movement
+    updatePlayerMovement();
+    
     // Spawn items
     const spawnRate = Math.max(20, 60 - Math.floor(gameState.score / 50));
     if (frameCount - lastSpawn > spawnRate) {
@@ -478,65 +483,142 @@ function backToHome() {
 
 // Controls
 let mouseDown = false;
+let touchIdentifier = null;
+const keys = {
+    left: false,
+    right: false
+};
 
-canvas?.addEventListener('mousedown', (e) => {
-    if (!gameState.gameRunning || gameState.gamePaused) return;
-    mouseDown = true;
-    const rect = canvas.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    player.moveTo(mouseX);
-});
-
-canvas?.addEventListener('mousemove', (e) => {
-    if (!gameState.gameRunning || gameState.gamePaused || !mouseDown) return;
-    const rect = canvas.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    player.moveTo(mouseX);
-});
-
-document.addEventListener('mouseup', () => {
-    mouseDown = false;
-});
-
-// Touch controls
-canvas?.addEventListener('touchstart', (e) => {
-    if (!gameState.gameRunning || gameState.gamePaused) return;
-    e.preventDefault();
-    mouseDown = true;
-    const rect = canvas.getBoundingClientRect();
-    const touchX = e.touches[0].clientX - rect.left;
-    player.moveTo(touchX);
-});
-
-canvas?.addEventListener('touchmove', (e) => {
-    if (!gameState.gameRunning || gameState.gamePaused || !mouseDown) return;
-    e.preventDefault();
-    const rect = canvas.getBoundingClientRect();
-    const touchX = e.touches[0].clientX - rect.left;
-    player.moveTo(touchX);
-});
-
-canvas?.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    mouseDown = false;
-});
-
-// Keyboard controls
+// Keyboard controls - WASD + Arrow keys
 document.addEventListener('keydown', (e) => {
     if (!gameState.gameRunning || gameState.gamePaused) return;
     
     if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-        player.x -= player.speed;
+        keys.left = true;
+        e.preventDefault();
     } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-        player.x += player.speed;
+        keys.right = true;
+        e.preventDefault();
+    } else if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
+        e.preventDefault();
+    } else if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') {
+        e.preventDefault();
     } else if (e.key === ' ' || e.key === 'Escape') {
         togglePause();
+        e.preventDefault();
     }
 });
+
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+        keys.left = false;
+    } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+        keys.right = false;
+    }
+});
+
+// Update player movement in game loop
+function updatePlayerMovement() {
+    if (!player) return;
+    
+    if (keys.left) {
+        player.x -= player.speed;
+        player.targetX = player.x; // Sync target to prevent snap-back
+    }
+    if (keys.right) {
+        player.x += player.speed;
+        player.targetX = player.x; // Sync target to prevent snap-back
+    }
+    
+    // Boundaries
+    if (player.x < 0) {
+        player.x = 0;
+        player.targetX = 0;
+    }
+    if (player.x + player.width > player.containerWidth) {
+        player.x = player.containerWidth - player.width;
+        player.targetX = player.x;
+    }
+}
+
+// Controls Setup
+function setupControls() {
+    const gameCanvas = document.getElementById('gameCanvas');
+    if (!gameCanvas) return;
+
+    // Mouse controls
+    gameCanvas.addEventListener('mousedown', (e) => {
+        if (!gameState.gameRunning || gameState.gamePaused) return;
+        mouseDown = true;
+        const rect = gameCanvas.getBoundingClientRect();
+        const mouseX = (e.clientX - rect.left) * (gameCanvas.width / rect.width);
+        if (player) player.moveTo(mouseX);
+    });
+
+    gameCanvas.addEventListener('mousemove', (e) => {
+        if (!gameState.gameRunning || gameState.gamePaused) return;
+        if (!mouseDown) return;
+        const rect = gameCanvas.getBoundingClientRect();
+        const mouseX = (e.clientX - rect.left) * (gameCanvas.width / rect.width);
+        if (player) player.moveTo(mouseX);
+    });
+
+    document.addEventListener('mouseup', () => {
+        mouseDown = false;
+    });
+
+    // Touch controls - Optimized for mobile
+    function handleTouch(e) {
+        if (!gameState.gameRunning || gameState.gamePaused) return;
+        
+        const rect = gameCanvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        
+        if (touch && player) {
+            const touchX = (touch.clientX - rect.left) * (gameCanvas.width / rect.width);
+            player.moveTo(touchX);
+        }
+    }
+
+    gameCanvas.addEventListener('touchstart', (e) => {
+        if (!gameState.gameRunning || gameState.gamePaused) return;
+        e.preventDefault(); // Prevent scrolling
+        mouseDown = true;
+        
+        if (e.touches.length > 0) {
+            touchIdentifier = e.touches[0].identifier;
+            handleTouch(e);
+        }
+    }, { passive: false });
+
+    gameCanvas.addEventListener('touchmove', (e) => {
+        if (!gameState.gameRunning || gameState.gamePaused) return;
+        e.preventDefault(); // Prevent scrolling
+        
+        if (mouseDown) {
+            handleTouch(e);
+        }
+    }, { passive: false });
+
+    gameCanvas.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        mouseDown = false;
+        touchIdentifier = null;
+    }, { passive: false });
+
+    gameCanvas.addEventListener('touchcancel', (e) => {
+        e.preventDefault();
+        mouseDown = false;
+        touchIdentifier = null;
+    }, { passive: false });
+}
 
 // Initialize
 console.log('🎅 Santa Gifts Catch - Game Loaded!');
 console.log('Use mouse/touch to move the bag or Arrow Keys/A/D');
+
+// Setup controls immediately
+setupControls();
 
 // Show welcome screen on load
 setTimeout(() => {

@@ -45,6 +45,10 @@ body {
     align-items: center;
 }
 
+#mapSelectionScreen.screen.active{
+    justify-content: inherit !important;
+}
+
 /* Welcome Screen */
 #welcomeScreen {
     background: url('wallpapers/Type=Cozy Christmas.jpg') center/cover;
@@ -136,6 +140,7 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(255, 68, 68, 0.4);
     letter-spacing: clamp(0.5px, 0.15vw, 2px);
+    animation: scale 2s infinite;
 }
 
 .start-button:hover {
@@ -145,6 +150,18 @@ body {
 
 .start-button:active {
     transform: translateY(0);
+}
+
+@keyframes scale{
+    0%{
+        scale: 1;
+    }
+    50%{
+        scale: 1.05;
+    }
+    100%{
+        scale: 1;
+    }
 }
 
 /* How To Play Screen */
@@ -234,11 +251,17 @@ body {
 
 .map-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 35vw, 450px), 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: clamp(15px, 2.5vw, 40px);
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 clamp(10px, 2vw, 20px);
+}
+
+@media screen and (max-width: 940px) {
+    .map-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .map-card {
