@@ -56,6 +56,7 @@ let player;
 let fallingItems = [];
 let frameCount = 0;
 let lastSpawn = 0;
+let consecutiveBombs = 0;
 
 // Responsive canvas sizing
 function resizeCanvas() {
@@ -186,7 +187,7 @@ class FallingItem {
         
         // Base speed increases with score
         const scoreSpeedMultiplier = 1 + (gameState.score / 500);
-        this.speed = (3 + Math.random() * 2) * scoreSpeedMultiplier;
+        this.speed = (2.5 + Math.random() * 1.8) * scoreSpeedMultiplier;
         this.rotation = 0;
         this.rotationSpeed = (Math.random() - 0.5) * 0.05;
     }
@@ -314,6 +315,7 @@ function startGame() {
     fallingItems = [];
     frameCount = 0;
     lastSpawn = 0;
+    consecutiveBombs = 0;
     
     // Create player
     player = new Player();
@@ -349,8 +351,22 @@ function update() {
     const spawnRate = Math.max(20, 60 - Math.floor(gameState.score / 50));
     if (frameCount - lastSpawn > spawnRate) {
         const bombChance = 0.15 + (gameState.score * 0.0002);
-        const isBomb = Math.random() < bombChance;
+        let isBomb = Math.random() < bombChance;
+        
+        // Prevent more than 2 consecutive bombs
+        if (isBomb && consecutiveBombs >= 2) {
+            isBomb = false;
+        }
+        
         fallingItems.push(new FallingItem(isBomb));
+        
+        // Update consecutive bomb counter
+        if (isBomb) {
+            consecutiveBombs++;
+        } else {
+            consecutiveBombs = 0;
+        }
+        
         lastSpawn = frameCount;
     }
     
