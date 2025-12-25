@@ -350,11 +350,11 @@ function update() {
     // Spawn items
     const spawnRate = Math.max(20, 60 - Math.floor(gameState.score / 50));
     if (frameCount - lastSpawn > spawnRate) {
-        const bombChance = 0.15 + (gameState.score * 0.0002);
+        const bombChance = 0.06 + (gameState.score * 0.0001);
         let isBomb = Math.random() < bombChance;
         
-        // Prevent more than 2 consecutive bombs
-        if (isBomb && consecutiveBombs >= 2) {
+        // Prevent more than 1 consecutive bomb
+        if (isBomb && consecutiveBombs >= 1) {
             isBomb = false;
         }
         
