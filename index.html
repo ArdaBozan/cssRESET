@@ -71,6 +71,26 @@
             <span id="bonusText">30+</span>
         </div>
 
+        <!-- Pause Menu Screen -->
+        <div id="pauseMenuScreen" class="screen">
+            <div class="pause-content">
+                <h2 class="section-title">PAUSED</h2>
+                
+                <div class="settings-box">
+                    <div class="setting-row">
+                        <label for="blurSlider">Background Blur</label>
+                        <input type="range" id="blurSlider" min="0" max="20" value="8" oninput="updateBlur(this.value)">
+                    </div>
+                </div>
+
+                <div class="pause-buttons">
+                    <button class="game-button resume" onclick="togglePause()">RESUME</button>
+                    <button class="game-button restart" onclick="restartGame()">RESTART</button>
+                    <button class="game-button home" onclick="backToHome()">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Game Over Screen -->
         <div id="gameOverScreen" class="screen">
             <div class="gameover-content">

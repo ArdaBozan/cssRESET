@@ -562,6 +562,92 @@ body {
     animation: bonusPopup 1.5s ease-out;
 }
 
+/* Pause Menu Screen */
+#pauseMenuScreen {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    display: none; /* Ensure hidden by default */
+}
+
+#pauseMenuScreen.active {
+    display: flex; /* Ensure visible when active */
+}
+
+.pause-content {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    padding: clamp(30px, 5vw, 60px);
+    border-radius: clamp(20px, 3vw, 40px);
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 90%;
+    max-width: 500px;
+}
+
+.settings-box {
+    margin: clamp(20px, 3vw, 40px) 0;
+    background: rgba(0, 0, 0, 0.2);
+    padding: clamp(15px, 2vw, 25px);
+    border-radius: 15px;
+}
+
+.setting-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+}
+
+.setting-row label {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 500;
+}
+
+input[type=range] {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #FFD700;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.pause-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.game-button.resume {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #8B4513;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+}
+
+.game-button.resume:hover {
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+}
+
+.game-button.restart {
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+}
+
+.game-button.home {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+}
+
 /* Game Over Screen */
 #gameOverScreen {
     background: linear-gradient(135deg, 

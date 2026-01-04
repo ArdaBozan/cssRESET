@@ -458,7 +458,30 @@ function showBonusNotification(text, isNegative = false) {
 function togglePause() {
     gameState.gamePaused = !gameState.gamePaused;
     const pauseBtn = document.querySelector('.pause-button');
-    pauseBtn.textContent = gameState.gamePaused ? '▶' : '⏸';
+    const pauseScreen = document.getElementById('pauseMenuScreen');
+    
+    console.log('Toggle Pause:', gameState.gamePaused); // Debug log
+
+    if (gameState.gamePaused) {
+        if (pauseBtn) pauseBtn.textContent = '▶';
+        if (pauseScreen) {
+            pauseScreen.classList.add('active');
+            pauseScreen.style.display = 'flex'; // Force display
+        }
+    } else {
+        if (pauseBtn) pauseBtn.textContent = '⏸';
+        if (pauseScreen) {
+            pauseScreen.classList.remove('active');
+            pauseScreen.style.display = 'none'; // Force hide
+        }
+    }
+}
+
+function updateBlur(value) {
+    const bg = document.getElementById('gameBackground');
+    if (bg) {
+        bg.style.filter = `blur(${value}px)`;
+    }
 }
 
 function endGame() {
@@ -470,6 +493,7 @@ function endGame() {
     const gameBg = document.getElementById('gameBackground');
     if (gameBg) gameBg.style.display = 'none';
     document.getElementById('gameHUD').style.display = 'none';
+    document.getElementById('pauseMenuScreen').classList.remove('active'); // Ensure pause menu is closed
     
     // Show game over screen
     const gameOverScreen = document.getElementById('gameOverScreen');
@@ -479,11 +503,13 @@ function endGame() {
 
 function restartGame() {
     document.getElementById('gameOverScreen').classList.remove('active');
+    document.getElementById('pauseMenuScreen').classList.remove('active');
     startGame();
 }
 
 function backToHome() {
     document.getElementById('gameOverScreen').classList.remove('active');
+    document.getElementById('pauseMenuScreen').classList.remove('active');
     gameState.selectedMap = null;
     showWelcomeScreen();
 }
@@ -498,6 +524,13 @@ const keys = {
 
 // Keyboard controls - WASD + Arrow keys
 document.addEventListener('keydown', (e) => {
+    // Allow toggling pause even if game is paused
+    if (e.key === ' ' || e.key === 'Escape') {
+        togglePause();
+        e.preventDefault();
+        return;
+    }
+
     if (!gameState.gameRunning || gameState.gamePaused) return;
     
     if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
@@ -509,9 +542,6 @@ document.addEventListener('keydown', (e) => {
     } else if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
         e.preventDefault();
     } else if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') {
-        e.preventDefault();
-    } else if (e.key === ' ' || e.key === 'Escape') {
-        togglePause();
         e.preventDefault();
     }
 });
